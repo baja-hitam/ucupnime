@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streaming Anime</title>
+    <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/vidstack@next/player/styles/default/theme.min.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/vidstack@next/player/styles/default/layouts/video.min.css"
+/>
+</head>
+<body style="max-width: 420px; border: 1px solid black; padding: 10px;">
+  <iframe id="player" style="display: none;" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" width="100%" height="230px" scrolling="no" allowfullscreen></iframe></div>
+    <br>
+    <input type="text" name="" id="queryInput" placeholder="Search..." value=""><button id="searchBtn">Search</button>
+
+    <div id="resultContainer" style="display: none;"></div>
+
+    <div id="animeInfoContainer" style="display: none;">
+        <h3 id="videoTitle"></h3>
+        <div id="totalEpisode"></div>
+        <div id="status"></div>
+        <div id="aired"></div>
+        <div id="rating"></div>
+        <div id="genres"></div>
+        <div id="type"></div>
+        <p id="videoDescription"></p>
+
+        <h3 style="display: none;" id="an">Select</h3><select style="display: none;" id="selectElement"></select>
+        <button style="display: none;" id="episodeButton">Watch</button>
+
+            <div id="qualityContainer" style="display: none;">
+                <h3>Resolution</h3>
+                <div id="serverSelect" style="display: inline-block;"></div>
+                <a href="" id="downloadButton" target="_blank">Download</a>
+            </div>
+    </div>
+    <div id="mainLoading" style="display: none;">
+        Loading...
+    </div>
+    <script src="script.js"></script>
+    <script
+  src="https://cdn.jsdelivr.net/npm/vidstack@next/cdn/with-layouts/vidstack.js"
+  type="module"
+></script>
+</body>
+</html>
