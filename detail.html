@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="dist/output.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="w-full h-full flex flex-col relative items-center overflow-hidden">
+        <div class="absolute z-[2] w-full h-[1000px] top-0 backdrop-blur-[15px] bg-rose-900/70">
+        </div>
+        <img src="" alt="" srcset="" id="poster" class="w-full h-[1000px] absolute z-[1] top-0 object-cover">
+        <div class="w-full h-min opacity-1 overflow-hidden relative">
+          <div class="relative z-[3] inline-block left-0 top-0 w-full h-[90px]">
+            <a href="" class="font-yu-mincho text-xl float-left text-white ml-5 mt-[15px]">UCUPNIME</a>
+            <a href="index.html" class="font-yu-mincho float-left text-xl text-white relative ml-[30%] mt-[15px] home">Home</a>
+            <a href="series.html" class="font-yu-mincho float-left text-xl text-white relative ml-8 mt-[15px] series">Series</a>
+            <a href="movie.html" class="font-yu-mincho float-left text-xl text-white relative ml-8 mt-[15px] movie">Movies</a>
+            <a href="genre.html" class="font-yu-mincho float-left text-xl text-white relative ml-8 mt-[15px]">Genres</a>
+            <input type="text" class="w-[200px] h-[25px] rounded-full text-white absolute right-5 mt-[15px] bg-rose-800">
+            <button type="submit" class="absolute right-5 mt-[15px]"><img src="asset/search.png" class="w-[25px] bg-rose-800 rounded-full h-[25px]" alt="" srcset=""></button>
+        </div>
+          </div>
+          <div class="w-full h-[900px] z-[4] bg-transparent top-[50px] relative">
+              <div class="w-[1200px] relative flex items-start top-[150px] left-[80px] h-[400px]">
+                <div class="w-auto grid grid-cols-1 justify-items-center absolute right-[-100px] top-[-100px] text-white z-[5] h-auto">
+                  <p class="font-Tahoma font-extrabold" id="score"></p>
+                  <p id="tittle_score"></p>
+                  <p id="episod" class="mt-4 font-Tahoma font-extrabold"></p>
+                  <p id="title_episod"></p>
+                </div>
+                <img src="" alt="" srcset="" id="poster_detail" class="w-[300px] h-full rounded-xl">
+                <div class="w-max mt-10 text-white ml-20 h-max">
+                    <p id="judul_detail" class="text-2xl font-Tahoma font-extrabold"></p>
+                    <p id="genre_detail" class="text-md font-Tahoma font-medium"></p>
+                    <p id="release_detail" class="text-xs mt-[5px] font-Tahoma"></p>
+                    <p class="mt-4 font-Tahoma font-thin" id="deskripsi"></p>
+                </div>
+                <div class="w-auto h-auto flex items-center absolute right-[-70px] bottom-[-180px] text-white z-[5]">
+                  <p class="py-[5px] px-[20px] border-[2px] font-Tahoma font-bold rounded-full">SUB INDO</p>
+                  <p class="ml-5 py-[5px] px-[20px] border-[2px] font-Tahoma font-bold rounded-full">HD</p>
+                </div>
+                <div class="absolute left-[70px] grid grid-cols-1 gap-y-4 justify-center w-auto z-[5] h-auto bottom-[-130px]">
+                  <button class="bg-transparent rounded-full py-[5px] pl-[20px] pr-[20px] border text-white" style="display: none;" id="episodeButton">Watch</button>
+                  <select class="bg-transparent py-[5px] pl-[20px] pr-[20px] border text-white" style="display: none;" id="selectElement"></select>
+                </div>
+              </div>
+          </div>
+          
+        </div>
+    <script src="detail.js"></script>
+</body>
+</html>

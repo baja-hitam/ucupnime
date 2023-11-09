@@ -1,0 +1,129 @@
+const pathName = window.location.pathname;
+const pageName = pathName.split("/").pop();
+
+if (pageName === 'index.html') {
+    document.querySelector(".home").classList.add("active");
+}
+if (pageName === 'series.html') {
+    document.querySelector(".series").classList.add("active");
+}
+if (pageName === 'movie.html') {
+    document.querySelector(".movie").classList.add("active");
+}
+
+const pst = document.querySelectorAll(".poster")
+const wrp = document.querySelectorAll(".poster-warp")
+const pstOngoing = document.querySelectorAll(".poster_ongoing")
+const skeletonOngoing = document.querySelectorAll('#ongoing .skeleton')
+const pred = document.querySelectorAll('.premiered');
+const jdl = document.querySelectorAll('.judul');
+const eps = document.querySelectorAll('.episode');
+const sta = document.querySelectorAll('.star');
+const seriesWarp = document.querySelectorAll('.series_warp');
+const premiered = [];
+
+async function fetchDataFromApiAnime(page) {
+    // Ganti URL API dan parameter sesuai kebutuhan Anda
+    const apiUrl = `https://wajik-anime-api.vercel.app/anime?page=${page}`;
+  
+    return fetch(apiUrl)
+      .then(response => response.json())
+      .catch(error => {
+        console.error('Terjadi kesalahan:', error);
+      });
+  };
+  async function fetchDataFromApiDetailAnime(slug) {
+    // Ganti URL API dan parameter sesuai kebutuhan Anda
+    const apiUrl = `https://wajik-anime-api.vercel.app/anime/${slug}`;
+  
+    return fetch(apiUrl)
+      .then(response => response.json())
+      .catch(error => {
+        console.error('Terjadi kesalahan:', error);
+      });
+  };
+  async function getDataFromApiSeries(page) {
+    const data = await fetchDataFromApiAnime(page);
+    for (let i = 0; i < 12; i++) {
+      sta[i].innerHTML = `${data.list[i].star}`;
+      eps[i].innerHTML = `${data.list[i].episode}`;
+      jdl[i].innerHTML = `${data.list[i].title}`;
+      pstOngoing[i].src = `${data.list[i].poster}`;
+    }
+    for (let i = 0; i < 12; i++) {
+      seriesWarp[i].addEventListener('click',async function() {
+        localStorage.setItem('datakey',JSON.stringify(data.list[i].slug));
+        window.location = "detail.html";
+      })
+    }
+    for (let i = 0; i < 12; i++) {
+        const data1= await fetchDataFromApiDetailAnime(data.list[i].slug);
+        premiered.push(data1.detailsList[5].title);
+        pred[i].innerHTML = `${premiered[i]} / Sub Indo`;
+    }
+  }
+
+const element = document.querySelector(".pagination ul");
+let totalPages = 40;
+let page = 1;
+
+//calling function with passing parameters and adding inside element which is ul tag
+element.innerHTML = createPagination(totalPages, page);
+function createPagination(totalPages, page){
+  getDataFromApiSeries(page);
+  let liTag = '';
+  let active;
+  let beforePage = page - 1;
+  let afterPage = page + 1;
+  if(page > 1){ //show the next button if the page value is greater than 1
+    liTag += `<li class="btn prev" onclick="createPagination(totalPages, ${page - 1})"><span><i class="fas fa-angle-left"></i> Prev</span></li>`;
+  }
+
+  if(page > 2){ //if page value is less than 2 then add 1 after the previous button
+    liTag += `<li class="first numb" onclick="createPagination(totalPages, 1)"><span>1</span></li>`;
+    if(page > 3){ //if page value is greater than 3 then add this (...) after the first li or page
+      liTag += `<li class="dots"><span>...</span></li>`;
+    }
+  }
+
+  // how many pages or li show before the current li
+  if (page == totalPages) {
+    beforePage = beforePage - 2;
+  } else if (page == totalPages - 1) {
+    beforePage = beforePage - 1;
+  }
+  // how many pages or li show after the current li
+  if (page == 1) {
+    afterPage = afterPage + 2;
+  } else if (page == 2) {
+    afterPage  = afterPage + 1;
+  }
+
+  for (var plength = beforePage; plength <= afterPage; plength++) {
+    if (plength > totalPages) { //if plength is greater than totalPage length then continue
+      continue;
+    }
+    if (plength == 0) { //if plength is 0 than add +1 in plength value
+      plength = plength + 1;
+    }
+    if(page == plength){ //if page is equal to plength than assign active string in the active variable
+      active = "active1";
+    }else{ //else leave empty to the active variable
+      active = "";
+    }
+    liTag += `<li class="numb ${active}" onclick="createPagination(totalPages, ${plength})"><span>${plength}</span></li>`;
+  }
+
+  if(page < totalPages - 1){ //if page value is less than totalPage value by -1 then show the last li or page
+    if(page < totalPages - 2){ //if page value is less than totalPage value by -2 then add this (...) before the last li or page
+      liTag += `<li class="dots"><span>...</span></li>`;
+    }
+    liTag += `<li class="last numb" onclick="createPagination(totalPages, ${totalPages})"><span>${totalPages}</span></li>`;
+  }
+
+  if (page < totalPages) { //show the next button if the page value is less than totalPage(20)
+    liTag += `<li class="btn next" onclick="createPagination(totalPages, ${page + 1})"><span>Next <i class="fas fa-angle-right"></i></span></li>`;
+  }
+  element.innerHTML = liTag; //add li tag inside ul tag
+  return liTag; //reurn the li tag
+}

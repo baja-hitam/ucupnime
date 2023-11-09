@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="dist/output.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="w-full h-full flex flex-col relative items-center overflow-hidden">
+        <div class="absolute z-[2] w-full h-[1560px] top-0 backdrop-blur-[15px] bg-rose-900/70">
+        </div>
+        <img src="" alt="" srcset="" id="poster" class="w-full h-[1560px] absolute z-[1] top-0 object-cover">
+        <div class="w-full h-min opacity-1 overflow-hidden relative">
+            <div class="relative z-[3] inline-block left-0 top-0 w-full h-[50px]">
+                <a href="" class="font-yu-mincho text-xl float-left text-white ml-5 mt-[15px]">UCUPNIME</a>
+                <a href="index.html" class="font-yu-mincho float-left text-xl text-white relative ml-[450px] mt-[15px] home">Home</a>
+                <a href="series.html" class="font-yu-mincho float-left text-xl text-white relative ml-8 mt-[15px] series">Series</a>
+                <a href="movie.html" class="font-yu-mincho float-left text-xl text-white relative ml-8 mt-[15px] movie">Movies</a>
+                <a href="genre.html" class="font-yu-mincho float-left text-xl text-white relative ml-8 mt-[15px]">Genres</a>
+                <input type="text" class="w-[200px] h-[25px] rounded-full text-white absolute right-5 mt-[15px] bg-rose-600 bg-opacity-20">
+                <button type="submit" class="absolute right-5 mt-[15px]"><img src="asset/search.png" class="w-[25px] bg-rose-600 bg-opacity-10 rounded-full h-[25px]" alt="" srcset=""></button>
+            </div>
+          </div>
+          <div class="w-full h-[1500px] z-[4] bg-transparent top-[50px] relative">
+            <div class="w-full bg-black relative h-[600px]">
+            <iframe id="player" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" scrolling="no" allowfullscreen></iframe>
+            </div>
+              <div class="w-[1200px] relative flex items-start top-[150px] left-[80px] h-[400px]">
+                <div id="qualityContainer" style="display: none;" class="absolute top-[-140px] left-[0px] text-white">
+                    <h3 class="mb-2">Resolution</h3>
+                    <div id="serverSelect" style="display: inline-block;"></div>
+                    <a href="" id="downloadButton" target="_blank">Download</a>
+                </div>
+                <img src="" alt="" srcset="" id="poster_detail" class="w-[300px] h-full rounded-xl">
+                <div class="w-max mt-[20px] text-white ml-7 h-max">
+                    <p id="judul_detail" class="text-2xl font-Tahoma font-extrabold"></p>
+                    <p id="release_detail" class="text-xs mt-[5px] font-Tahoma"></p>
+                    <p class="mt-4 font-Tahoma font-thin" id="deskripsi"></p>
+                </div>
+              </div>
+              </div>
+          <div class="w-auto h-auto flex items-center absolute right-[20px] top-[50px] text-white z-[5]">
+            <img class="w-[200px] h-[40px]" src="asset/hd.png" alt="" srcset="">
+          </div>
+        </div>
+    <script src="playerMovie.js"></script>
+</body>
+</html>
