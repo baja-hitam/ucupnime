@@ -54,7 +54,7 @@
 }
 
 .slide{
-  width: 150px;
+  width: 180px;
   height: 250px;
   position: relative;
 }
@@ -70,7 +70,7 @@
   position: absolute;
 }
 .utama img{
-  left: -180px;
+  margin-left: -60%;
   box-shadow: -77px -1px 77px 0px rgba(15,18,25,0.5);
 }
 .slide img {
@@ -134,11 +134,18 @@
   top: 0px;
   left: 15%;
 }
-.judul,.judulSearch{
+.judul,.judulSearch,.judul_movie{
   height: 50px;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.sinopsis{
+  height: 145px;
+  display: -webkit-box;
+  -webkit-line-clamp: 9;
+  overflow: hidden;
   -webkit-box-orient: vertical;
 }
 .jdlSlide{

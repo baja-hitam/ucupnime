@@ -2,13 +2,13 @@ const pathName = window.location.pathname;
 const pageName = pathName.split("/").pop();
 
 if (pageName === 'index.html') {
-    document.querySelector(".home").classList.add("active");
+    document.querySelector("#navbar .home").classList.add("active");
 }
 if (pageName === 'series.html') {
-    document.querySelector(".series").classList.add("active");
+    document.querySelector("#navbar .series").classList.add("active");
 }
 if (pageName === 'movie.html') {
-    document.querySelector(".movie").classList.add("active");
+    document.querySelector("#navbar .movie").classList.add("active");
 }
 
 const pst = document.querySelectorAll(".poster")
@@ -157,16 +157,20 @@ async function fetchDataFromApiAnime(page) {
       pstOngoing[i].src = `${data.list[i].poster}`;
     }
     for (let i = 0; i < 12; i++) {
-      const data1= await fetchDataFromApiDetailAnime(data.list[i].slug);
-      premiered.push(data1.detailsList[5].title);
-      pred[i].innerHTML = `${premiered[i]} / Sub Indo`;
-  }
-    for (let i = 0; i < 12; i++) {
+      getDataFromApiSeriesSub(data.list[i].slug);
       seriesWarp[i].addEventListener('click',async function() {
         localStorage.setItem('datakey',JSON.stringify(data.list[i].slug));
         window.location = "detail.html";
       })
     }
+  }
+
+  async function getDataFromApiSeriesSub(ku) {
+    for (let i = 0; i < 12; i++) {
+      const data1= await fetchDataFromApiDetailAnime(ku);
+      premiered.push(data1.detailsList[5].title);
+      pred[i].innerHTML = `${premiered[i]} / Sub Indo`;
+  }
   }
   async function getDataFromApiMovie() {
     const data = await fetchDataFromApiMovie(1);
@@ -222,9 +226,6 @@ async function fetchDataFromApiAnime(page) {
         airedDate[i].innerHTML = `${topPopularDataAired[i]}`;
         sinopsis[i].innerHTML = `${topPopularDataDescription[i]}`;
       }
-      wrp.forEach((t)=>{
-        t.style.transform = 'translateX(550px)';
-      })
   }
 
 const slider = document.querySelector(".slider");
