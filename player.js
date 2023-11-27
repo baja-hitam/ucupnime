@@ -50,10 +50,8 @@ async function fetchDataFromApiDetailAnime(player) {
       option.classList.add('bg-transparent');
       episodeSelect.appendChild(option);
   }
-  const watchBtn = document.getElementById('episodeButton');
-    watchBtn.style.display = 'block';
-    watchBtn.addEventListener("click", async function () {
-        const episodeId = document.getElementById("selectElement").value;
+    episodeSelect.addEventListener("change", async function () {
+        const episodeId = this.value;
         const data = await fetchDataFromApiDetailAnime(episodeId);
         watchContainer.style.display = 'block';
         const serverSelect = document.getElementById('serverSelect');
@@ -65,8 +63,6 @@ async function fetchDataFromApiDetailAnime(player) {
   async function displayWatchInfo(params) {
     const data = await fetchDataFromApiDetailAnime(params);
     watchContainer.style.display = 'block';
-    //const downloadButton = document.getElementById('downloadButton');
-    //downloadButton.href = episodeData.download;
 
     const serverSelect = document.getElementById('serverSelect');
     serverSelect.innerHTML = "";

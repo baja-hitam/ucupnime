@@ -23,37 +23,37 @@
                 <button type="submit" class="absolute right-5 mt-[15px]"><img src="asset/search.png" class="w-[25px] bg-rose-600 bg-opacity-10 rounded-full h-[25px]" alt="" srcset=""></button>
             </div>
           </div>
-          <div class="w-full h-[1500px] z-[4] bg-transparent top-[50px] relative">
-            <div class="w-full bg-black relative h-[600px]">
+          <div class="w-full h-[1500px] z-[4] flex flex-col items-center bg-transparent top-[50px] relative">
+            <div class="w-full bg-black relative h-[400px] lg:h-[500px] xl:h-[600px]">
             <iframe id="player" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" scrolling="no" allowfullscreen></iframe>
             </div>
-              <div class="w-[1200px] relative flex items-start top-[150px] left-[80px] h-[400px]">
-                <div id="qualityContainer" style="display: none;" class="absolute top-[-140px] left-[0px] text-white">
+              <div class="w-[90%] relative flex flex-col items-center justify-center top-[210px] h-max sm:w-[70%] lg:w-[70%] lg:flex-row lg:items-start xl:w-[80%]">
+                <div id="qualityContainer" style="display: none;" class="absolute top-[-210px] left-0 text-white sm:left-[-80px] md:left-[-100px] lg:left-0">
                     <h3 class="mb-2">Resolution</h3>
-                    <div id="serverSelect" style="display: inline-block;"></div>
+                    <div id="serverSelect" class="grid grid-cols-2 gap-y-4 sm:grid-cols-3 md:grid-cols-4"></div>
                     <a href="" id="downloadButton" target="_blank">Download</a>
                 </div>
-                <div class="w-auto grid grid-cols-1 justify-items-center absolute right-[0px] top-[-100px] text-white z-[5] h-auto">
-                    <p class="font-Tahoma font-extrabold" id="score"></p>
-                    <p id="tittle_score"></p>
-                    <p id="episod" class="mt-4 font-Tahoma font-extrabold"></p>
-                    <p id="title_episod"></p>
-                  </div>
-                <img src="" alt="" srcset="" id="poster_detail" class="w-[300px] h-full rounded-xl">
-                <div class="w-max mt-[20px] text-white ml-7 h-max">
+                <div class="w-auto grid grid-cols-1 justify-items-center absolute top-0 text-white z-[5] h-auto right-[-12px] md:top-[-160px] sm:right-[-80px] md:right-[-100px]">
+                  <p class="font-Tahoma font-extrabold" id="score"></p>
+                  <p id="tittle_score"></p>
+                  <p id="episod" class="mt-4 font-Tahoma font-extrabold"></p>
+                  <p id="title_episod"></p>
+                </div>
+                <img src="" alt="" srcset="" id="poster_detail" class="rounded-xl w-[200px] h-[300px] xl:w-[300px] xl:h-[400px]">
+                <div class="text-white h-max w-full lg:ml-[10px]">
                     <p id="judul_detail" class="text-2xl font-Tahoma font-extrabold"></p>
-                    <p id="genre_detail" class="text-md font-Tahoma font-medium"></p>
+                    <p id="genre_detail" class="text-sm font-Tahoma font-medium xl:text-xl"></p>
                     <p id="release_detail" class="text-xs mt-[5px] font-Tahoma"></p>
-                    <p class="mt-4 font-Tahoma font-thin" id="deskripsi"></p>
+                    <p class="mt-4 font-Tahoma font-thin line-clamp-[23] text-xs md:text-sm md:line-clamp-[19] lg:text-sm lg:line-clamp-[20] xl:text-base xl:line-clamp-[18]" id="deskripsi"></p>
                 </div>
               </div>
           </div>
-          <div class="absolute top-[60px] right-[270px] grid grid-cols-2 gap-x-4 w-auto z-[5] h-auto">
-            <button class="bg-transparent rounded-full py-[5px] pl-[20px] pr-[20px] border-[2px] text-white" style="display: none;" id="episodeButton">Watch</button>
+          <div class="absolute top-[60px] right-[240px] w-auto z-[5] h-auto">
             <select class="bg-transparent py-[5px] pl-[20px] pr-[20px] border-[2px] text-white" style="display: none;" id="selectElement"></select>
           </div>
           <div class="w-auto h-auto flex items-center absolute right-[20px] top-[59px] text-white z-[5]">
-            <img class="w-[200px] h-[40px]" src="asset/hd.png" alt="" srcset="">
+            <p class="py-[5px] px-[20px] border-[2px] font-Tahoma font-bold rounded-full">SUB INDO</p>
+                  <p class="ml-5 py-[5px] px-[20px] border-[2px] font-Tahoma font-bold rounded-full">HD</p>
           </div>
         </div>
     <script src="player.js"></script>

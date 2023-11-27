@@ -2,13 +2,13 @@ const pathName = window.location.pathname;
 const pageName = pathName.split("/").pop();
 
 if (pageName === 'index.html') {
-    document.querySelector(".home").classList.add("active");
+    document.querySelector("#navbar .home").classList.add("active");
 }
 if (pageName === 'series.html') {
-    document.querySelector(".series").classList.add("active");
+    document.querySelector("#navbar .series").classList.add("active");
 }
 if (pageName === 'movie.html') {
-    document.querySelector(".movie").classList.add("active");
+    document.querySelector("#navbar .movie").classList.add("active");
 }
 
 const pst = document.querySelectorAll(".poster")
@@ -20,7 +20,20 @@ const jdl = document.querySelectorAll('.judul');
 const eps = document.querySelectorAll('.episode');
 const sta = document.querySelectorAll('.star');
 const moviesWarp = document.querySelectorAll('.movies_warp');
+const menu = document.getElementById('menu');
+const menuPage = document.getElementById('menu-page');
+const itemsMenu = document.getElementById('items-menu');
+const menuClose = document.getElementById('menu-close');
 const premiered = [];
+
+menu.addEventListener(('click'),()=>{
+  menuPage.style.width = '100%';
+  itemsMenu.style.display = 'flex';
+  })
+menuClose.addEventListener(('click'),()=>{
+    menuPage.style.width = '0';
+    itemsMenu.style.display = 'none';
+  })
 
 async function fetchDataFromApiMovie(page) {
     // Ganti URL API dan parameter sesuai kebutuhan Anda

@@ -7,25 +7,43 @@
     <link rel="stylesheet" href="dist/output.css">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div id="homeContainer" class="w-full h-full flex flex-col items-center overflow-hidden bg-gradient-to-b from-rose-900 to-[#0F1219] to-100%">
-      <!--Header-->
-        <div class="w-full h-[550px] opacity-1 overflow-hidden relative">
+<body class="bg-gradient-to-b from-rose-900 to-[#0F1219] to-100%">
+    <div id="homeContainer" class="w-full h-full flex flex-col items-center overflow-hidden">
+      <!--Header Android-->
+      <div class="w-0 h-full fixed left-0 transition-all z-30 bg-rose-900 menu-page">
+        <div class="hidden flex-col items-center items-menu">
+          <a href="index.html" class="font-yu-mincho float-left relative text-xl text-white mt-[15px] home active">Home</a>
+          <a href="series.html" class="font-yu-mincho float-left relative text-xl text-white mt-[15px] series">Series</a>
+          <a href="movie.html" class="font-yu-mincho float-left relative text-xl text-white mt-[15px] movie">Movies</a>
+          <div class="w-max h-min relative">
+            <input type="text" name=""value="" class="w-[200px] h-[25px] rounded-full text-white mt-[15px] bg-rose-800 queryInput">
+            <button class="absolute right-0 mt-[15px] searchBtn"><img src="asset/search.png" class="w-[25px] bg-rose-800 rounded-full h-[25px]" alt="" srcset=""></button>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="w-6 h-6 absolute right-[10px] top-[15px] menu-close">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>     
+        </div>   
+      </div>
+        <!--Header Tablet-->
+        <div class="w-full h-[100px] opacity-1 overflow-hidden relative sm:h-[550px]">
               <div class="flex justify-center w-full h-[90px]">
-                <div class="w-max h-min absolute left-[10px]">
+                <div class="w-max h-min sm:absolute sm:left-[10px]">
                   <a href="" class="font-yu-mincho text-xl float-left text-white mt-[15px]">UCUPNIME</a>
                 </div>
-                <div class="w-max h-min grid grid-flow-col gap-x-4" id="navbar">
-                  <a href="index.html" class="font-yu-mincho float-left relative text-xl text-white mt-[15px] home">Home</a>
+                <div class="w-max h-min hidden sm:grid sm:grid-flow-col sm:gap-x-4" id="navbar">
+                  <a href="index.html" class="font-yu-mincho float-left relative text-xl text-white mt-[15px] home active">Home</a>
                   <a href="series.html" class="font-yu-mincho float-left relative text-xl text-white mt-[15px] series">Series</a>
                   <a href="movie.html" class="font-yu-mincho float-left relative text-xl text-white mt-[15px] movie">Movies</a>
                 </div>
-                <div class="w-max h-min absolute right-[10px]">
-                  <input type="text" name="" id="queryInput" value="" class="w-[200px] h-[25px] rounded-full text-white mt-[15px] bg-rose-800">
-                  <button id="searchBtn" class="absolute right-0 mt-[15px]"><img src="asset/search.png" class="w-[25px] bg-rose-800 rounded-full h-[25px]" alt="" srcset=""></button>
+                <div class="w-max h-min absolute right-[10px] hidden sm:inline-block">
+                  <input type="text" name="" value="" class="w-[200px] h-[25px] rounded-full text-white mt-[15px] bg-rose-800 queryInput">
+                  <button class="absolute right-0 mt-[15px] searchBtn"><img src="asset/search.png" class="w-[25px] bg-rose-800 rounded-full h-[25px]" alt="" srcset=""></button>
                 </div>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="w-6 h-6 mt-[15px] absolute left-[10px] menu sm:hidden">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>                
               </div>
-            <div class="w-full h-auto font-yu-mincho flex justify-center text-white text-2xl">
+            <div class="w-full h-auto font-yu-mincho text-white text-2xl hidden sm:flex sm:justify-center">
               <div class="absolute">
                 <p class="text-white text-2xl float-left mr-2">Popular This Week</p>
                 <img src="asset/star.png" class="w-7 h-7 float-left" alt="">
@@ -34,276 +52,252 @@
                 <div class="slide">
                   <img class="poster skeleton" src="" alt="">
                   <div class="absolute top-0 shadow-[77px_-1px_77px_0px_rgba(15,18,25,0.5)] left-[85px] z-[3] rounded-2xl mt-[10px] bg-[#D9D9D9] note">
-                    <div class="w-[90%] judul-warp overflow-hidden flex items-center justify-center  h-[40px] absolute top-[15px] right-[4px] z-[4] ">
-                      <p class="judulSlide"></p>
+                    <div class="w-[70%] judul-warp font-Poppins overflow-hidden absolute left-[15%] top-2 h-[40px] z-[4]">
+                      <p class="judulSlide bottom-0 absolute line-clamp-2 text-sm"></p>
                     </div>
-                    <div class="w-[94%] info-warp overflow-hidden grid grid-cols-2 text-white h-[50px] absolute top-[55px] right-0 rounded-2xl z-[4] ">
-                      <div class="ml-2">
-                        <p class="text-[16px]">Release Date</p>
+                    <div class="w-[70%] info-warp overflow-hidden grid grid-cols-2 absolute top-[55px] left-[15%] z-[4] ">
+                      <div class="font-Poppins">
+                        <p class="text-sm font-semibold">Release Date</p>
                         <p class="airedDate text-xs"></p>
                       </div>
                       <div>
 
                       </div>
                     </div>
-                    <div class="w-[94%] sinopsis-warp overflow-hidden h-auto absolute top-[105px] right-0 rounded-2xl z-[4] ">
-                      <p class="ml-2">Sinopsis</p>
-                      <p class="sinopsis text-xs ml-2"></p>
+                    <div class="w-[80%] sinopsis-warp overflow-hidden absolute top-[105px] left-[15%] right-0 z-[4] font-Poppins ">
+                      <p class="text-sm font-semibold">Sinopsis</p>
+                      <p class="sinopsis text-xs "></p>
                     </div>
                   </div>
                 </div>
                 <div class="slide">
                   <img class="poster skeleton" src="" alt="">
                   <div class="absolute top-0 shadow-[77px_-1px_77px_0px_rgba(15,18,25,0.5)] left-[85px] z-[3] rounded-2xl mt-[10px] bg-[#D9D9D9] note">
-                    <div class="w-[90%] judul-warp overflow-hidden flex items-center justify-center  h-[40px] absolute top-[15px] right-[4px] z-[4] ">
-                      <p class="judulSlide"></p>
+                    <div class="w-[70%] judul-warp font-Poppins overflow-hidden absolute left-[15%] top-2 h-[40px] z-[4]">
+                      <p class="judulSlide bottom-0 absolute line-clamp-2 text-sm"></p>
                     </div>
-                    <div class="w-[94%] info-warp overflow-hidden grid grid-cols-2 text-white h-[50px] absolute top-[55px] right-0 rounded-2xl z-[4] ">
-                      <div class="ml-2">
-                        <p class="text-[16px]">Release Date</p>
+                    <div class="w-[70%] info-warp overflow-hidden grid grid-cols-2 absolute top-[55px] left-[15%] z-[4] ">
+                      <div class="font-Poppins">
+                        <p class="text-sm font-semibold">Release Date</p>
                         <p class="airedDate text-xs"></p>
                       </div>
                       <div>
 
                       </div>
                     </div>
-                    <div class="w-[94%] sinopsis-warp overflow-hidden h-auto absolute top-[105px] right-0 rounded-2xl z-[4] ">
-                      <p class="ml-2">Sinopsis</p>
-                      <p class="sinopsis text-xs ml-2"></p>
+                    <div class="w-[80%] sinopsis-warp overflow-hidden absolute top-[105px] left-[15%] right-0 z-[4] font-Poppins ">
+                      <p class="text-sm font-semibold">Sinopsis</p>
+                      <p class="sinopsis text-xs "></p>
                     </div>
                   </div>
                 </div>
                 <div class="slide">
                   <img class="poster skeleton" src="" alt="">
                   <div class="absolute top-0 shadow-[77px_-1px_77px_0px_rgba(15,18,25,0.5)] left-[85px] z-[3] rounded-2xl mt-[10px] bg-[#D9D9D9] note">
-                    <div class="w-[90%] judul-warp overflow-hidden flex items-center justify-center  h-[40px] absolute top-[15px] right-[4px] z-[4] ">
-                      <p class="judulSlide"></p>
+                    <div class="w-[70%] judul-warp font-Poppins overflow-hidden absolute left-[15%] top-2 h-[40px] z-[4]">
+                      <p class="judulSlide bottom-0 absolute line-clamp-2  text-sm"></p>
                     </div>
-                    <div class="w-[94%] info-warp overflow-hidden grid grid-cols-2 text-white h-[50px] absolute top-[55px] right-0 rounded-2xl z-[4] ">
-                      <div class="ml-2">
-                        <p class="text-[16px]">Release Date</p>
+                    <div class="w-[70%] info-warp overflow-hidden grid grid-cols-2 absolute top-[55px] left-[15%] z-[4] ">
+                      <div class="font-Poppins">
+                        <p class="text-sm font-semibold">Release Date</p>
                         <p class="airedDate text-xs"></p>
                       </div>
                       <div>
 
                       </div>
                     </div>
-                    <div class="w-[94%] sinopsis-warp overflow-hidden h-auto absolute top-[105px] right-0 rounded-2xl z-[4] ">
-                      <p class="ml-2">Sinopsis</p>
-                      <p class="sinopsis text-xs ml-2"></p>
+                    <div class="w-[80%] sinopsis-warp overflow-hidden absolute top-[105px] left-[15%] right-0 z-[4] font-Poppins ">
+                      <p class="text-sm font-semibold">Sinopsis</p>
+                      <p class="sinopsis text-xs "></p>
                     </div>
                   </div>
                 </div>
                 <div class="slide">
                   <img class="poster skeleton" src="" alt="">
                   <div class="absolute shadow-[77px_-1px_77px_0px_rgba(15,18,25,0.5)] top-0 mt-[10px] left-[85px] rounded-2xl bg-[#D9D9D9] note">
-                    <div class="w-[90%] judul-warp overflow-hidden flex items-center justify-center  h-[40px] absolute top-[15px] right-[4px] z-[4] ">
-                      <p class="judulSlide"></p>
+                    <div class="w-[70%] judul-warp font-Poppins overflow-hidden absolute left-[15%] top-2 h-[40px] z-[4]">
+                      <p class="judulSlide bottom-0 absolute line-clamp-2 text-sm"></p>
                     </div>
-                    <div class="w-[94%] info-warp overflow-hidden grid grid-cols-2 text-white h-[50px] absolute top-[55px] right-0 rounded-2xl z-[4] ">
-                      <div class="ml-2">
-                        <p class="text-[16px]">Release Date</p>
+                    <div class="w-[70%] info-warp overflow-hidden grid grid-cols-2 absolute top-[55px] left-[15%] z-[4] ">
+                      <div class="font-Poppins">
+                        <p class="text-sm font-semibold">Release Date</p>
                         <p class="airedDate text-xs"></p>
                       </div>
                       <div>
 
                       </div>
                     </div>
-                    <div class="w-[94%] sinopsis-warp overflow-hidden h-auto absolute top-[105px] right-0 rounded-2xl z-[4] ">
-                      <p class="ml-2">Sinopsis</p>
-                      <p class="sinopsis text-xs ml-2"></p>
+                    <div class="w-[80%] sinopsis-warp overflow-hidden absolute top-[105px] left-[15%] right-0 z-[4] font-Poppins ">
+                      <p class="text-sm font-semibold">Sinopsis</p>
+                      <p class="sinopsis text-xs "></p>
                     </div>
                   </div>
                 </div>
                 <div class="slide">
                   <img class="poster skeleton" src="" alt="">
                   <div class="absolute top-0 shadow-[77px_-1px_77px_0px_rgba(15,18,25,0.5)] left-[85px] z-[3] rounded-2xl mt-[10px] bg-[#D9D9D9] note">
-                    <div class="w-[90%] judul-warp overflow-hidden flex items-center justify-center  h-[40px] absolute top-[15px] right-[4px] z-[4] ">
-                      <p class="judulSlide"></p>
+                    <div class="w-[70%] judul-warp font-Poppins overflow-hidden absolute left-[15%] top-2 h-[40px] z-[4]">
+                      <p class="judulSlide bottom-0 absolute line-clamp-2 text-sm"></p>
                     </div>
-                    <div class="w-[94%] info-warp overflow-hidden grid grid-cols-2 text-white h-[50px] absolute top-[55px] right-0 rounded-2xl z-[4] ">
-                      <div class="ml-2">
-                        <p class="text-[16px]">Release Date</p>
+                    <div class="w-[70%] info-warp overflow-hidden grid grid-cols-2 absolute top-[55px] left-[15%] z-[4] ">
+                      <div class="font-Poppins">
+                        <p class="text-sm font-semibold">Release Date</p>
                         <p class="airedDate text-xs"></p>
                       </div>
                       <div>
 
                       </div>
                     </div>
-                    <div class="w-[94%] sinopsis-warp overflow-hidden h-auto absolute top-[105px] right-0 rounded-2xl z-[4] ">
-                      <p class="ml-2">Sinopsis</p>
-                      <p class="sinopsis text-xs ml-2"></p>
+                    <div class="w-[80%] sinopsis-warp overflow-hidden absolute top-[105px] left-[15%] right-0 z-[4] font-Poppins ">
+                      <p class="text-sm font-semibold">Sinopsis</p>
+                      <p class="sinopsis text-xs "></p>
                     </div>
                   </div>
                 </div>
                 <div class="slide utama">
                     <img class="poster skeleton" src="" alt="">
                     <div class="absolute top-0 shadow-[77px_-1px_77px_0px_rgba(15,18,25,0.5)] left-[85px] z-[3] rounded-2xl mt-[10px] bg-[#D9D9D9] note main">
-                      <div class="w-[90%] judul-warp overflow-hidden flex items-center justify-center  h-[40px] absolute top-[15px] right-[4px] z-[4] ">
-                        <p class="judulSlide"></p>
+                      <div class="w-[70%] judul-warp font-Poppins overflow-hidden absolute h-[40px] left-[15%] top-2 z-[4]">
+                        <p class="judulSlide bottom-0 absolute line-clamp-2 text-sm"></p>
                       </div>
-                      <div class="w-[94%] info-warp overflow-hidden grid grid-cols-2 text-white absolute top-[55px] right-0 rounded-2xl z-[4] ">
-                        <div class="ml-2 font-Poppins">
-                          <p class="text-[16px]">Release Date</p>
+                      <div class="w-[70%] info-warp overflow-hidden grid grid-cols-2 absolute top-[55px] left-[15%] z-[4] ">
+                        <div class="font-Poppins">
+                          <p class="text-sm font-semibold">Release Date</p>
                           <p class="airedDate text-xs"></p>
                         </div>
                         <div>
 
                         </div>
                       </div>
-                      <div class="w-[94%] sinopsis-warp overflow-hidden h-auto absolute top-[105px] right-0 rounded-2xl z-[4] ">
-                        <p class="ml-2">Sinopsis</p>
-                        <p class="sinopsis text-xs ml-2"></p>
+                      <div class="w-[70%] sinopsis-warp overflow-hidden absolute top-[105px] left-[15%] right-0 z-[4] font-Poppins ">
+                        <p class="text-sm font-semibold">Sinopsis</p>
+                        <p class="sinopsis text-xs "></p>
                       </div>
                     </div>
                   </div>
                   <div class="slide">
                     <img class="poster skeleton" src="" alt="">
                     <div class="absolute top-0 shadow-[77px_-1px_77px_0px_rgba(15,18,25,0.5)] left-[85px] z-[3] rounded-2xl mt-[10px] bg-[#D9D9D9] note">
-                      <div class="w-[90%] judul-warp overflow-hidden flex items-center justify-center  h-[40px] absolute top-[15px] right-[4px] z-[4] ">
-                        <p class="judulSlide"></p>
+                      <div class="w-[70%] judul-warp font-Poppins overflow-hidden absolute left-[15%] top-2 h-[40px] z-[4]">
+                        <p class="judulSlide bottom-0 absolute line-clamp-2 text-sm"></p>
                       </div>
-                      <div class="w-[94%] info-warp overflow-hidden grid grid-cols-2 text-white h-[50px] absolute top-[55px] right-0 rounded-2xl z-[4] ">
-                        <div class="ml-2">
-                          <p class="text-[16px]">Release Date</p>
+                      <div class="w-[70%] info-warp overflow-hidden grid grid-cols-2 absolute top-[55px] left-[15%] z-[4] ">
+                        <div class="font-Poppins">
+                          <p class="text-sm font-semibold">Release Date</p>
                           <p class="airedDate text-xs"></p>
                         </div>
                         <div>
 
                         </div>
                       </div>
-                      <div class="w-[94%] sinopsis-warp overflow-hidden h-auto absolute top-[105px] right-0 rounded-2xl z-[4] ">
-                        <p class="ml-2">Sinopsis</p>
-                        <p class="sinopsis text-xs ml-2"></p>
+                      <div class="w-[80%] sinopsis-warp overflow-hidden absolute top-[105px] left-[15%] right-0 z-[4] font-Poppins ">
+                        <p class="text-sm font-semibold">Sinopsis</p>
+                        <p class="sinopsis text-xs "></p>
                       </div>
                     </div>
                   </div>
                   <div class="slide">
                     <img class="poster skeleton" src="" alt="">
                     <div class="absolute top-0 shadow-[77px_-1px_77px_0px_rgba(15,18,25,0.5)] left-[85px] z-[3] rounded-2xl mt-[10px] bg-[#D9D9D9] note">
-                      <div class="w-[90%] judul-warp overflow-hidden flex items-center justify-center  h-[40px] absolute top-[15px] right-[4px] z-[4] ">
-                        <p class="judulSlide"></p>
+                      <div class="w-[70%] judul-warp font-Poppins overflow-hidden absolute left-[15%] top-2 h-[40px] z-[4]">
+                        <p class="judulSlide bottom-0 absolute line-clamp-2 text-sm"></p>
                       </div>
-                      <div class="w-[94%] info-warp overflow-hidden grid grid-cols-2 text-white h-[50px] absolute top-[55px] right-0 rounded-2xl z-[4] ">
-                        <div class="ml-2">
-                          <p class="text-[16px]">Release Date</p>
+                      <div class="w-[70%] info-warp overflow-hidden grid grid-cols-2 absolute top-[55px] left-[15%] z-[4] ">
+                        <div class="font-Poppins">
+                          <p class="text-sm font-semibold">Release Date</p>
                           <p class="airedDate text-xs"></p>
                         </div>
                         <div>
 
                         </div>
                       </div>
-                      <div class="w-[94%] sinopsis-warp overflow-hidden h-auto absolute top-[105px] right-0 rounded-2xl z-[4] ">
-                        <p class="ml-2">Sinopsis</p>
-                        <p class="sinopsis text-xs ml-2"></p>
+                      <div class="w-[80%] sinopsis-warp overflow-hidden absolute top-[105px] left-[15%] right-0 z-[4] font-Poppins ">
+                        <p class="text-sm font-semibold">Sinopsis</p>
+                        <p class="sinopsis text-xs "></p>
                       </div>
                     </div>
                   </div>
                   <div class="slide">
                     <img class="poster skeleton" src="" alt="">
                     <div class="absolute top-0 shadow-[77px_-1px_77px_0px_rgba(15,18,25,0.5)] left-[85px] z-[3] rounded-2xl mt-[10px] bg-[#D9D9D9] note">
-                      <div class="w-[90%] judul-warp overflow-hidden flex items-center justify-center  h-[40px] absolute top-[15px] right-[4px] z-[4] ">
-                        <p class="judulSlide"></p>
+                      <div class="w-[70%] judul-warp font-Poppins overflow-hidden absolute left-[15%] top-2 h-[40px] z-[4]">
+                        <p class="judulSlide bottom-0 absolute line-clamp-2 text-sm"></p>
                       </div>
-                      <div class="w-[94%] info-warp overflow-hidden grid grid-cols-2 text-white h-[50px] absolute top-[55px] right-0 rounded-2xl z-[4] ">
-                        <div class="ml-2">
-                          <p class="text-[16px]">Release Date</p>
-                          <p class="airedDate  text-xs"></p>
-                        </div>
-                        <div>
-
-                        </div>
-                      </div>
-                      <div class="w-[94%] sinopsis-warp overflow-hidden h-auto absolute top-[105px] right-0 rounded-2xl z-[4] ">
-                        <p class="ml-2">Sinopsis</p>
-                        <p class="sinopsis text-xs ml-2"></p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="slide">
-                    <img class="poster skeleton" src="" alt="">
-                    <div class="absolute top-0 shadow-[77px_-1px_77px_0px_rgba(15,18,25,0.5)] left-[85px] z-[3] rounded-2xl mt-[10px] bg-[#D9D9D9] note">
-                      <div class="w-[90%] judul-warp overflow-hidden flex items-center justify-center  h-[40px] absolute top-[15px] right-[4px] z-[4] ">
-                        <p class="judulSlide"></p>
-                      </div>
-                      <div class="w-[94%] info-warp overflow-hidden grid grid-cols-2 text-white h-[50px] absolute top-[55px] right-0 rounded-2xl z-[4] ">
-                        <div class="ml-2">
-                          <p class="text-[16px]">Release Date</p>
+                      <div class="w-[70%] info-warp overflow-hidden grid grid-cols-2 absolute top-[55px] left-[15%] z-[4] ">
+                        <div class="font-Poppins">
+                          <p class="text-sm font-semibold">Release Date</p>
                           <p class="airedDate text-xs"></p>
                         </div>
                         <div>
 
                         </div>
                       </div>
-                      <div class="w-[94%] sinopsis-warp overflow-hidden h-auto absolute top-[105px] right-0 rounded-2xl z-[4] ">
-                        <p class="ml-2">Sinopsis</p>
-                        <p class="sinopsis text-xs ml-2"></p>
+                      <div class="w-[80%] sinopsis-warp overflow-hidden absolute top-[105px] left-[15%] right-0 z-[4] font-Poppins ">
+                        <p class="text-sm font-semibold">Sinopsis</p>
+                        <p class="sinopsis text-xs "></p>
                       </div>
                     </div>
                   </div>
                   <div class="slide">
                     <img class="poster skeleton" src="" alt="">
                     <div class="absolute top-0 shadow-[77px_-1px_77px_0px_rgba(15,18,25,0.5)] left-[85px] z-[3] rounded-2xl mt-[10px] bg-[#D9D9D9] note">
-                    <div class="w-[90%] judul-warp overflow-hidden flex items-center justify-center  h-[40px] absolute top-[15px] right-[4px] z-[4] ">
-                        <p class="judulSlide"></p>
+                      <div class="w-[70%] judul-warp font-Poppins overflow-hidden absolute left-[15%] top-2 h-[40px] z-[4]">
+                        <p class="judulSlide bottom-0 absolute line-clamp-2 text-sm"></p>
                       </div>
-                      <div class="w-[94%] info-warp overflow-hidden grid grid-cols-2 text-white h-[50px] absolute top-[55px] right-0 rounded-2xl z-[4] ">
-                        <div class="ml-2">
-                          <p class="text-[16px]">Release Date</p>
+                      <div class="w-[70%] info-warp overflow-hidden grid grid-cols-2 absolute top-[55px] left-[15%] z-[4] ">
+                        <div class="font-Poppins">
+                          <p class="text-sm font-semibold">Release Date</p>
                           <p class="airedDate text-xs"></p>
                         </div>
                         <div>
 
                         </div>
                       </div>
-                      <div class="w-[94%] sinopsis-warp overflow-hidden h-auto absolute top-[105px] right-0 rounded-2xl z-[4] ">
-                        <p class="ml-2">Sinopsis</p>
-                        <p class="sinopsis text-xs ml-2"></p>
+                      <div class="w-[80%] sinopsis-warp overflow-hidden absolute top-[105px] left-[15%] right-0 z-[4] font-Poppins ">
+                        <p class="text-sm font-semibold">Sinopsis</p>
+                        <p class="sinopsis text-xs "></p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="slide">
+                    <img class="poster skeleton" src="" alt="">
+                    <div class="absolute top-0 shadow-[77px_-1px_77px_0px_rgba(15,18,25,0.5)] left-[85px] z-[3] rounded-2xl mt-[10px] bg-[#D9D9D9] note">
+                      <div class="w-[70%] judul-warp font-Poppins overflow-hidden absolute left-[15%] top-2 h-[40px] z-[4]">
+                        <p class="judulSlide bottom-0 absolute line-clamp-2 text-sm"></p>
+                      </div>
+                      <div class="w-[70%] info-warp overflow-hidden grid grid-cols-2 absolute top-[55px] left-[15%] z-[4] ">
+                        <div class="font-Poppins">
+                          <p class="text-sm font-semibold">Release Date</p>
+                          <p class="airedDate text-xs"></p>
+                        </div>
+                        <div>
+
+                        </div>
+                      </div>
+                      <div class="w-[80%] sinopsis-warp overflow-hidden absolute top-[105px] left-[15%] right-0 z-[4] font-Poppins ">
+                        <p class="text-sm font-semibold">Sinopsis</p>
+                        <p class="sinopsis text-xs "></p>
                       </div>
                     </div>
                   </div>
               </div>
             </div>
-              <svg id="next-btn" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="w-6 h-6 absolute z-[7] top-[290px] right-3">
+              <svg id="next-btn" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="w-6 h-6 absolute z-[7] top-[290px] hidden right-3 sm:inline-block">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
               </svg>
-              <svg id="prev-btn" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="w-6 h-6 absolute  z-[7] top-[290px] left-3">
+              <svg id="prev-btn" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="w-6 h-6 absolute  z-[7] top-[290px] hidden left-3 sm:inline-block">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
               </svg>
-
-            <!--<div class="relative w-full flex items-center h-[370px]">
-                <div class="relative ml-3 w-[250px] z-[4] h-[350px] poster-warp">
-                <img class="poster relative skeleton float-left z-[5] rounded-2xl w-full h-full" src="" alt="" srcset="">
-                <div class="w-[300px] h-[330px] absolute z[4] shadow-[77px_-1px_77px_0px_rgba(15,18,25,0.5)] top-0 mt-[10px] right-[-280px] rounded-2xl bg-[#D9D9D9] note"></div>
-                </div>
-                <div class="relative ml-3 w-[150px] z-[3] h-[250px] poster-warp">
-                <img class="poster relative skeleton float-left z-[4] rounded-2xl w-full h-full" src="" alt="" srcset="">
-                <div class="absolute h-[330px] top-0 right-[-280px] z-[3] rounded-2xl mt-[10px] bg-[#D9D9D9] note"></div>
-                </div>
-                <div class="relative ml-3 w-[150px] z-[2] h-[250px] poster-warp">
-                <img class="poster relative skeleton float-left z-[3] rounded-2xl w-full h-full" src="" alt="" srcset="">
-                <div class="absolute h-[330px] top-0 right-[-280px] z-[2] rounded-2xl mt-[10px] bg-[#D9D9D9] note"></div>
-                </div>
-                <div class="relative ml-3 w-[150px] h-[250px] z-[1] poster-warp">
-                <img class="poster relative skeleton float-left z-[1] rounded-2xl w-full h-full" src="" alt="" srcset="">
-                <div class="absolute h-[330px] top-0 right-[-280px] rounded-2xl mt-[10px] bg-[#D9D9D9] note"></div>
-                </div>
-                <svg id="next" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="w-6 h-6 absolute right-3">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-                  </svg>
-                  <svg id="prev" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="w-6 h-6 absolute left-3">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
-                  </svg>
-                  
-            </div>-->
         </div>
         <!--end-->
         <!--Series-->
-        <div class="mt-7 w-9/12 relative sm:w-[98%] md:w-[98%] lg:w-11/12 xl:w-9/12">
+        <div class="mt-7 w-[95%] relative sm:w-[97%] md:w-[98%] lg:w-11/12 xl:w-9/12">
           <p class="text-white font-yu-mincho relative left-0 top-0 text-[25px]">Discover Series</p>
-          <p class="text-white font-yu-mincho absolute right-0 top-2 text-[15px] px-6 rounded-full bg-rose-600">VIEW ALL</p>
+          <a href="series.html">
+            <p class="text-white font-yu-mincho absolute right-0 top-2 text-[15px] px-6 rounded-full bg-rose-600">VIEW ALL</p>
+          </a>
         </div>      
-        <div id="ongoing" class="w-9/12 relative mt-[20px] mb-10 grid grid-cols-2 justify-center box-border h-max sm:w-[98%] sm:gap-x-[20px] sm:grid-cols-3 md:w-[98%] md:grid-cols-4 md:gap-x-[20px] lg:w-11/12 xl:w-9/12 lg:grid-cols-6 lg:gap-x-[20px] lg:gap-y-[10px] lg:h-[680px]">
+        <div id="ongoing" class="w-[95%] relative mt-[20px] gap-x-3 gap-y-5 mb-10 grid grid-cols-3 justify-center box-border h-max sm:w-[97%] sm:gap-x-[10px] sm:grid-cols-4 md:w-[98%] md:grid-cols-4 md:gap-x-[20px] lg:w-11/12 lg:grid-cols-6 lg:gap-x-[20px] lg:gap-y-[10px] lg:h-[680px] xl:w-9/12">
             <div class="w-[100%] h-[100%] series_warp relative">
               <div class="w-full h-[70%] relative lg:h-[60%] xl:h-[70%]">
                 <div class="absolute z-[15] right-[-8px] top-[-5px] flex items-center justify-center rounded-full w-[50px] h-[20px] bg-rose-600">
@@ -498,11 +492,13 @@
             </div>
         </div>
         <!--Movie-->
-        <div class="mt-7 w-9/12 relative sm:w-[98%] md:w-[98%] lg:w-11/12 xl:w-9/12">
+        <div class="mt-7 w-[95%] relative sm:w-[97%] md:w-[98%] lg:w-11/12 xl:w-9/12">
           <p class="text-white font-yu-mincho relative left-0 top-0 text-[25px]">Discover Movies</p>
-          <p class="text-white font-yu-mincho absolute right-0 top-2 text-[15px] px-6 rounded-full bg-rose-600">VIEW ALL</p>
+          <a href="movie.html">
+            <p class="text-white font-yu-mincho absolute right-0 top-2 text-[15px] px-6 rounded-full bg-rose-600">VIEW ALL</p>
+          </a>
         </div>      
-        <div id="movie" class="w-9/12 relative mt-[20px] grid grid-cols-2 justify-center box-border h-min sm:w-[98%] sm:gap-x-[20px] sm:grid-cols-3 md:w-[98%] md:grid-cols-4 md:gap-x-[20px] lg:w-11/12 xl:w-9/12 lg:grid-cols-6 lg:gap-x-[20px] lg:gap-y-[10px] lg:h-[680px]">
+        <div id="movie" class="w-[95%] relative mt-[20px] grid grid-cols-3 gap-x-3 gap-y-3 justify-center box-border h-min sm:w-[97%] sm:gap-x-[10px] sm:grid-cols-4 md:w-[98%] md:grid-cols-4 md:gap-x-[20px] lg:w-11/12 xl:w-9/12 lg:grid-cols-6 lg:gap-x-[20px] lg:gap-y-[10px] lg:h-[680px]">
             <div class="w-[100%] movies_warp h-[100%] relative">
               <div class="w-full h-[70%] relative rounded-md lg:h-[60%] xl:h-[70%]">
               <img class="poster_movie w-full h-full rounded-md skeleton" src="" alt="" srcset="">
@@ -662,17 +658,41 @@
         </div>
     </div>
     
-    <div id="searchContainer" style="display: none;" class="w-full h-full flex flex-col relative overflow-hidden bg-gradient-to-b from-rose-900 to-[#0F1219] to-100%">
-      <div class="relative inline-block left-0 top-0 w-full h-[90px]">
-        <a href="" class="font-yu-mincho text-xl float-left text-white ml-5 mt-[15px]">UCUPNIME</a>
-        <a href="index.html" class="font-yu-mincho float-left text-xl text-white relative ml-[30%] mt-[15px] home">Home</a>
-        <a href="series.html" class="font-yu-mincho float-left text-xl text-white relative ml-8 mt-[15px] series">Series</a>
-        <a href="movie.html" class="font-yu-mincho float-left text-xl text-white relative ml-8 mt-[15px] movie">Movies</a>
-        <a href="genre.html" class="font-yu-mincho float-left text-xl text-white relative ml-8 mt-[15px]">Genres</a>
-        <input type="text" id="queryInput" class="w-[200px] h-[25px] rounded-full text-white absolute right-5 mt-[15px] bg-rose-800">
-        <button type="submit" id="searchBtn" class="absolute right-5 mt-[15px]"><img src="asset/search.png" class="w-[25px] bg-rose-800 rounded-full h-[25px]" alt="" srcset=""></button>
+    <div id="searchContainer" style="display: none;" class="w-full h-full flex flex-col relative overflow-hidden">
+      <!--Header Android-->
+      <div class="w-0 h-full fixed left-0 transition-all z-30 bg-rose-900 menu-page">
+        <div class="hidden flex-col items-center items-menu">
+          <a href="index.html" class="font-yu-mincho float-left relative text-xl text-white mt-[15px] home active">Home</a>
+          <a href="series.html" class="font-yu-mincho float-left relative text-xl text-white mt-[15px] series">Series</a>
+          <a href="movie.html" class="font-yu-mincho float-left relative text-xl text-white mt-[15px] movie">Movies</a>
+          <div class="w-max h-min relative">
+            <input type="text" name="" value="" class="w-[200px] h-[25px] rounded-full text-white mt-[15px] bg-rose-800 queryInput">
+            <button class="absolute right-0 mt-[15px] searchBtn"><img src="asset/search.png" class="w-[25px] bg-rose-800 rounded-full h-[25px]" alt="" srcset=""></button>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="w-6 h-6 absolute right-[10px] top-[15px] menu-close">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>     
+        </div>   
       </div>
-      <div id="search" class="w-9/12 mx-auto relative mt-[10px] grid grid-cols-2 justify-center box-border h-min sm:grid-cols-3 lg:grid-cols-6 lg:gap-x-[20px] lg:gap-y-[10px] lg:h-[680px]">
+       <!--Header Tablet Laptop-->
+      <div class="flex justify-center w-full h-[90px]">
+        <div class="w-max h-min sm:absolute sm:left-[10px]">
+          <a href="" class="font-yu-mincho text-xl float-left text-white mt-[15px]">UCUPNIME</a>
+        </div>
+        <div class="w-max h-min hidden sm:grid sm:grid-flow-col sm:gap-x-4" id="navbar">
+          <a href="index.html" class="font-yu-mincho float-left relative text-xl text-white mt-[15px] home active">Home</a>
+          <a href="series.html" class="font-yu-mincho float-left relative text-xl text-white mt-[15px] series">Series</a>
+          <a href="movie.html" class="font-yu-mincho float-left relative text-xl text-white mt-[15px] movie">Movies</a>
+        </div>
+        <div class="w-max h-min absolute right-[10px] hidden sm:inline-block">
+          <input type="text" name="" value="" class="w-[200px] h-[25px] rounded-full text-white mt-[15px] bg-rose-800 queryInput">
+          <button class="absolute right-0 mt-[15px] searchBtn"><img src="asset/search.png" class="w-[25px] bg-rose-800 rounded-full h-[25px]" alt="" srcset=""></button>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="w-6 h-6 mt-[15px] absolute left-[10px] menu sm:hidden">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>                
+      </div>
+      <div id="search" class="w-[95%] relative mt-[20px] gap-x-3 gap-y-5 mb-10 grid grid-cols-3 m-auto h-max sm:w-[97%] sm:gap-x-[10px] sm:grid-cols-4 md:w-[98%] md:grid-cols-4 md:gap-x-[20px] lg:w-11/12 lg:grid-cols-6 lg:gap-x-[20px] lg:gap-y-[10px] lg:h-[680px] xl:w-9/12">
           <div class="w-[100%] h-[100%] search_warp relative">
             <div class="w-full h-[70%] relative ">
               <div class="absolute z-[15] right-[-8px] top-[-5px] flex items-center justify-center rounded-full w-[50px] h-[20px] bg-rose-600">

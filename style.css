@@ -1,8 +1,3 @@
-#deskripsi{
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-}
 
 /* SKELETON */
 .skeleton {
@@ -106,7 +101,7 @@
   content: '';
   position: absolute;
   width: 100%;
-  height: 3px;
+  height: 1.5px;
   background-color: #595959;
   bottom: 0px;
   left: 0px;
@@ -128,11 +123,11 @@
   background-color: #158a84;
 }
 #player{
-  width: 1065px;
-  height: 1065px;
-  position: absolute;
-  top: 0px;
-  left: 15%;
+  width: 100%;
+  height: 100%;
+}
+#prev-btn,#next-btn{
+  cursor: pointer;
 }
 .judul,.judulSearch,.judul_movie{
   height: 50px;
@@ -158,25 +153,27 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
-.sinopsis-warp,.info-warp{
+.sinopsis-warp,.info-warp,.judul-warp{
   color: #595959;
 }
-@media screen and (min-width: 1024px) {
-  
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+.pagination{
+  margin-top: -30px;
+  margin-bottom: 60px;
+  justify-self: center;
+}
   .pagination ul{
     width: max-content;
     display: flex;
     flex-wrap: wrap;
-    position: absolute;
-    left: 30%;
+    position: relative;
     background: #060606;
-    padding: 8px;
+    padding: 2px;
     border-radius: 50px;
     box-shadow: 0px 10px 15px rgba(0,0,0,0.1);
   }
   .pagination ul li{
-    color: #20B2AA;
+    color: rgb(236, 18, 80);
     list-style: none;
     line-height: 45px;
     text-align: center;
@@ -205,7 +202,7 @@
     cursor: default;
   }
   .pagination ul li.btn{
-    padding: 0 20px;
+    padding: 0 10px;
     border-radius: 50px;
   }
   .pagination li.active1,
@@ -213,6 +210,5 @@
   .pagination ul li:first-child:hover,
   .pagination ul li:last-child:hover{
     color: #fff;
-    background: #20B2AA;
+    background: rgb(206, 17, 70);
   }
-}

@@ -38,11 +38,15 @@ const jdlMovie = document.querySelectorAll('.judul_movie');
 const seriesWarp = document.querySelectorAll('.series_warp');
 const moviesWarp = document.querySelectorAll('.movies_warp');
 const searchWarp = document.querySelectorAll('.search_warp');
-const searchBtn = document.getElementById('searchBtn');
-const queryInput = document.getElementById('queryInput');
+const searchBtn = document.querySelectorAll('.searchBtn');
+const queryInput = document.querySelectorAll('.queryInput');
 const homeContainer = document.getElementById('homeContainer');
 const searchContainer = document.getElementById('searchContainer');
 const namaSearch = document.getElementById('namaSearch');
+const menu = document.querySelectorAll('.menu');
+const menuPage = document.querySelectorAll('.menu-page');
+const itemsMenu = document.querySelectorAll('.items-menu');
+const menuClose = document.querySelectorAll('.menu-close');
 const totalRequests = 10;
 const dataResults = [];
 const dataSlug = [];
@@ -56,26 +60,35 @@ const dataEpisode = [];
 const premiered = [];
 const premieredSearch = [];
 const premieredMovie = [];
+const mop = [];
 
-const n = window.matchMedia('(min-width: 1024px)')
+getDataFilter();
+setTimeout(() => {
+  getDataFilterSlug();
+}, 10000);
+setTimeout(() => {
+  getDataFromApi();
+}, 25000);
+getDataFromApiSeries();
+getDataFromApiMovie();
 
-function maintenence(x) {
-  if (x.matches) {
-    getDataFromApi();
-    getDataFromApiSeries();
-    getDataFromApiMovie();
-  }else{
-    window.location = 'maintenence.html';
-  }
-}
-n.addListener(maintenence(n));
 
-searchBtn.addEventListener("click", async function () {
+async function search() {
   homeContainer.style.display = 'none';
   searchContainer.style.display = 'inline-block';
-
-  const query = queryInput.value;
-  namaSearch.innerHTML = `Search = ${query}`;
+  itemsMenu.forEach((d)=>{
+    d.style.display = 'none';
+  })
+  menuPage.forEach((c)=>{
+    c.style.width = '0';
+  })
+  let query;
+  queryInput.forEach((e)=>{
+    if (e.value) {
+      query= e.value;
+    }
+  })
+  //namaSearch.innerHTML = `Search = ${query}`;
   const data = await fetchDataFromApiSearch(query);
   for (let i = 0; i < 12; i++) {
     staSearch[i].innerHTML = `${data.list[i].star}`;
@@ -94,7 +107,33 @@ searchBtn.addEventListener("click", async function () {
       })
     }
   }
-});
+}
+searchBtn.forEach((e)=>{
+  e.addEventListener("click", async function () {
+    search();
+  });
+})
+
+menu.forEach((f)=>{
+  f.addEventListener(('click'),()=>{
+    menuPage.forEach((c)=>{
+      c.style.width = '100%';
+    })
+    itemsMenu.forEach((d)=>{
+      d.style.display = 'flex';
+    })
+    })
+})
+menuClose.forEach((g)=>{
+  g.addEventListener(('click'),()=>{
+    menuPage.forEach((c)=>{
+      c.style.width = '0';
+    })
+    itemsMenu.forEach((d)=>{
+      d.style.display = 'none';
+    })
+    })
+})
 
 
 async function fetchDataFromApiAnime(page) {
@@ -148,7 +187,7 @@ async function fetchDataFromApiAnime(page) {
       });
   };
   
-  async function getDataFromApiSeries() {
+async function getDataFromApiSeries() {
     const data = await fetchDataFromApiAnime(1);
     for (let i = 0; i < 12; i++) {
       sta[i].innerHTML = `${data.list[i].star}`;
@@ -157,7 +196,9 @@ async function fetchDataFromApiAnime(page) {
       pstOngoing[i].src = `${data.list[i].poster}`;
     }
     for (let i = 0; i < 12; i++) {
-      getDataFromApiSeriesSub(data.list[i].slug);
+      const data1= await fetchDataFromApiDetailAnime(data.list[i].slug);
+      premiered.push(data1.detailsList[5].title);
+      pred[i].innerHTML = `${premiered[i]} / Sub Indo`;
       seriesWarp[i].addEventListener('click',async function() {
         localStorage.setItem('datakey',JSON.stringify(data.list[i].slug));
         window.location = "detail.html";
@@ -165,13 +206,6 @@ async function fetchDataFromApiAnime(page) {
     }
   }
 
-  async function getDataFromApiSeriesSub(ku) {
-    for (let i = 0; i < 12; i++) {
-      const data1= await fetchDataFromApiDetailAnime(ku);
-      premiered.push(data1.detailsList[5].title);
-      pred[i].innerHTML = `${premiered[i]} / Sub Indo`;
-  }
-  }
   async function getDataFromApiMovie() {
     const data = await fetchDataFromApiMovie(1);
     for (let i = 0; i < 12; i++) {
@@ -191,40 +225,35 @@ async function fetchDataFromApiAnime(page) {
     })
   }
   }
-  async function getDataFromApi() {
+  async function getDataFilter() {
     for (let page = 1; page <= totalRequests; page++) {
       try {
         const data = await fetchDataFromApiAnime(page);
-        const mop = data.list.filter((anm) => parseFloat(anm.star) >= 7.5)
-        mop.forEach(async(tst)=>{
-          dataResults.push(tst.poster);
-          dataSlug.push(tst.slug)
-          dataTitle.push(tst.title)
-          dataStar.push(tst.star)
-          dataEpisode.push(tst.episode);
-          const data1 = await fetchDataFromApiDetailAnime(tst.slug);
-          dataAired.push(data1.detailsList[6].title)
-          console.log(data1);
-          dataSinopsis.push(data1.description)
+        const test = data.list.filter((anm) => parseFloat(anm.star) >= 7.5);
+        test.forEach((r)=>{
+          mop.push(r.slug);
         })
       } catch (error) {
-        // Handle errors or retry requests if needed
         console.error('Terjadi kesalahan:', error);
       }
     }
-    const topPopularData = dataResults.slice(0, 11);
-    const topPopularDataSlug = dataSlug.slice(0, 11);
-    const topPopularDataStar = dataStar.slice(0,11);
-    const topPopularDataTitle = dataTitle.slice(0, 11);
-    const topPopularDataEpisode = dataEpisode.slice(0,11);
-    const topPopularDataAired = dataAired.slice(0,11);
-    const topPopularDataDescription = dataSinopsis.slice(0,11);
+  }
 
+  async function getDataFilterSlug() {
     for (let i = 0; i < 11; i++) {
-        pst[i].src = `${topPopularData[i]}`
-        jdlSlide[i].innerHTML = `${topPopularDataTitle[i]}`;
-        airedDate[i].innerHTML = `${topPopularDataAired[i]}`;
-        sinopsis[i].innerHTML = `${topPopularDataDescription[i]}`;
+      const data = await fetchDataFromApiDetailAnime(mop[i]);
+      dataTitle.push(data.title);
+      dataResults.push(data.poster);
+      dataAired.push(data.detailsList[6].title);
+      dataSinopsis.push(data.description);
+    }
+  }
+  function getDataFromApi() {
+    for (let i = 0; i < 11; i++) {
+        pst[i].src = `${dataResults[i]}`
+        jdlSlide[i].innerHTML = `${dataTitle[i]}`;
+        airedDate[i].innerHTML = `${dataAired[i]}`;
+        sinopsis[i].innerHTML = `${dataSinopsis[i]}`;
       }
   }
 
@@ -246,17 +275,16 @@ prevButton.addEventListener("click", function () {
   nt[counter].style.display = 'none';
     counter--;
     if (counter === -1) {
-      counter = 8;
+      counter = 10;
     }
   slide[counter].classList.add('utama');
   if (counter === 4) {
     nt.forEach(u=>{
       u.style.display = 'block';
     })
-    console.log(nt[counter]);
     nt[5].style.display = 'none';
   }
-  setInterval(() => {
+  setTimeout(() => {
     nt[counter].classList.add('main');
   }, 500);
 });
@@ -270,19 +298,17 @@ nextButton.addEventListener("click", function () {
   })
   nt[counter].style.display = 'none';
     counter++;
-    if (counter === 9) {
+    if (counter === 11) {
       counter = 0;
     }
   slide[counter].classList.add('utama');
   if (counter === 4) {
-    console.log(nt[counter]);
     nt.forEach(u=>{
       u.style.display = 'block';
     })
-    console.log(nt[counter]);
     nt[3].style.display = 'none';
   }
-  setInterval(() => {
+  setTimeout(() => {
     nt[counter].classList.add('main');
   }, 500);
-});
+})
