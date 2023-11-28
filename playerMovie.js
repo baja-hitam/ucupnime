@@ -112,6 +112,7 @@ async function getDataFromApiWatchMovie(slug) {
     releaseDetail.innerHTML = `${data.year}`;
     poster.src = `${data.poster}`;
     qualityControl.style.display = 'block';
+    videoPlayer.src = `${data.videoPlayer[0].url}`;
 
     const serverSelect = document.getElementById('serverSelect');
     serverSelect.innerHTML = '';
@@ -131,6 +132,5 @@ async function getDataFromApiWatchMovie(slug) {
         const serverUrl = this.value;
         videoPlayer.src = `${serverUrl}`;
         })
-        
     }
 }

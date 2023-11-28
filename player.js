@@ -154,6 +154,7 @@ async function fetchDataFromApiDetailAnime(player) {
 
     const serverSelect = document.getElementById('serverSelect');
     serverSelect.innerHTML = "";
+    videoPlayer.src = `${data.videoPlayer[0].url}`;
 
     data.videoPlayer.forEach((stream) => {
         const option = document.createElement('button');
