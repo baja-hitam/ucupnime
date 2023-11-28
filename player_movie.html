@@ -7,44 +7,300 @@
     <link rel="stylesheet" href="dist/output.css">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div class="w-full h-full flex flex-col relative items-center overflow-hidden">
-        <div class="absolute z-[2] w-full h-[1560px] top-0 backdrop-blur-[15px] bg-rose-900/70">
+<body class="bg-gradient-to-b from-rose-900 to-[#0F1219] to-100%">
+    <div id="playerMovieContainer" class="w-full h-full flex flex-col relative items-center overflow-hidden">
+        <div class="absolute z-[2] w-full h-full top-0 backdrop-blur-[15px] bg-rose-900/70">
         </div>
-        <img src="" alt="" srcset="" id="poster" class="w-full h-[1560px] absolute z-[1] top-0 object-cover">
-        <div class="w-full h-min opacity-1 overflow-hidden relative">
-            <div class="relative z-[3] inline-block left-0 top-0 w-full h-[50px]">
-                <a href="" class="font-yu-mincho text-xl float-left text-white ml-5 mt-[15px]">UCUPNIME</a>
-                <a href="index.html" class="font-yu-mincho float-left text-xl text-white relative ml-[450px] mt-[15px] home">Home</a>
-                <a href="series.html" class="font-yu-mincho float-left text-xl text-white relative ml-8 mt-[15px] series">Series</a>
-                <a href="movie.html" class="font-yu-mincho float-left text-xl text-white relative ml-8 mt-[15px] movie">Movies</a>
-                <a href="genre.html" class="font-yu-mincho float-left text-xl text-white relative ml-8 mt-[15px]">Genres</a>
-                <input type="text" class="w-[200px] h-[25px] rounded-full text-white absolute right-5 mt-[15px] bg-rose-600 bg-opacity-20">
-                <button type="submit" class="absolute right-5 mt-[15px]"><img src="asset/search.png" class="w-[25px] bg-rose-600 bg-opacity-10 rounded-full h-[25px]" alt="" srcset=""></button>
+        <img src="" alt="" srcset="" id="poster" class="w-full h-full absolute z-[1] top-0 object-cover">
+        <!--Header android-->
+        <div class="w-0 h-full fixed left-0 transition-all z-30 bg-rose-900 menu-page">
+          <div class="hidden flex-col items-center items-menu">
+            <a href="index.html" class="font-yu-mincho float-left relative text-xl text-white mt-[15px] home">Home</a>
+            <a href="series.html" class="font-yu-mincho float-left relative text-xl text-white mt-[15px] series">Series</a>
+            <a href="movie.html" class="font-yu-mincho float-left relative text-xl text-white mt-[15px] movie">Movies</a>
+            <div class="w-max h-min relative">
+              <input type="text" name=""value="" class="w-[200px] h-[25px] rounded-full text-white mt-[15px] bg-rose-800 queryInput">
+              <button class="absolute right-0 mt-[15px] searchBtn"><img src="asset/search.png" class="w-[25px] bg-rose-800 rounded-full h-[25px]" alt="" srcset=""></button>
             </div>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="w-6 h-6 absolute right-[10px] top-[15px] menu-close">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>     
+          </div>   
+        </div>
+        <!--Header Dekstop-->
+        <div class="w-full h-auto opacity-1 overflow-hidden relative z-[3]">
+          <div class="flex justify-center w-full h-[90px]">
+            <div class="w-max h-min sm:absolute sm:left-[10px]">
+              <a href="" class="font-yu-mincho text-xl float-left text-white mt-[15px]">UCUPNIME</a>
+            </div>
+            <div class="w-max h-min hidden sm:grid sm:grid-flow-col sm:gap-x-4" id="navbar">
+              <a href="index.html" class="font-yu-mincho float-left relative text-xl text-white mt-[15px] home">Home</a>
+              <a href="series.html" class="font-yu-mincho float-left relative text-xl text-white mt-[15px] series">Series</a>
+              <a href="movie.html" class="font-yu-mincho float-left relative text-xl text-white mt-[15px] movie">Movies</a>
+            </div>
+            <div class="w-max h-min absolute right-[10px] hidden sm:inline-block">
+              <input type="text" name="" value="" class="w-[200px] h-[25px] rounded-full text-white mt-[15px] bg-rose-800 queryInput">
+              <button class="absolute right-0 mt-[15px] searchBtn"><img src="asset/search.png" class="w-[25px] bg-rose-800 rounded-full h-[25px]" alt="" srcset=""></button>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="w-6 h-6 mt-[15px] absolute left-[10px] menu sm:hidden">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>                
           </div>
-          <div class="w-full h-[1500px] z-[4] bg-transparent top-[50px] relative">
-            <div class="w-full bg-black relative h-[600px]">
+          </div>
+
+          <div class="w-full h-[1500px] z-[4] flex flex-col items-center bg-transparent top-[50px] relative">
+            <div class="w-full bg-black relative h-[400px] lg:h-[500px] xl:h-[600px]">
             <iframe id="player" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" scrolling="no" allowfullscreen></iframe>
             </div>
-              <div class="w-[1200px] relative flex items-start top-[150px] left-[80px] h-[400px]">
-                <div id="qualityContainer" style="display: none;" class="absolute top-[-140px] left-[0px] text-white">
+              <div class="w-[90%] relative flex flex-col items-center justify-center top-[210px] h-max sm:w-[70%] lg:w-[70%] lg:flex-row lg:items-start xl:w-[80%]">
+                <div id="qualityContainer" style="display: none;" class="absolute top-[-210px] left-0 text-white sm:left-[-80px] md:left-[-100px] lg:left-0">
                     <h3 class="mb-2">Resolution</h3>
-                    <div id="serverSelect" style="display: inline-block;"></div>
+                    <div id="serverSelect" class="grid grid-cols-2 gap-y-4 sm:grid-cols-3 md:grid-cols-4"></div>
                     <a href="" id="downloadButton" target="_blank">Download</a>
                 </div>
-                <img src="" alt="" srcset="" id="poster_detail" class="w-[300px] h-full rounded-xl">
-                <div class="w-max mt-[20px] text-white ml-7 h-max">
+                <img src="" alt="" srcset="" id="poster_detail" class="rounded-xl w-[200px] h-[300px] xl:w-[300px] xl:h-[400px]">
+                <div class="text-white h-max w-full lg:ml-[10px]">
                     <p id="judul_detail" class="text-2xl font-Tahoma font-extrabold"></p>
                     <p id="release_detail" class="text-xs mt-[5px] font-Tahoma"></p>
-                    <p class="mt-4 font-Tahoma font-thin" id="deskripsi"></p>
+                    <p class="mt-4 font-Tahoma line-clamp-[23] text-xs md:text-sm md:line-clamp-[19] lg:text-sm lg:line-clamp-[20] xl:text-base xl:line-clamp-[18]" id="deskripsi"></p>
                 </div>
               </div>
               </div>
-          <div class="w-auto h-auto flex items-center absolute right-[20px] top-[50px] text-white z-[5]">
-            <img class="w-[200px] h-[40px]" src="asset/hd.png" alt="" srcset="">
-          </div>
+              <div class="w-auto h-auto flex items-center absolute right-[20px] top-[90px] text-white z-[5]">
+                <p class="py-[5px] px-[20px] border-[2px] font-Tahoma font-bold rounded-full">SUB INDO</p>
+                      <p class="ml-5 py-[5px] px-[20px] border-[2px] font-Tahoma font-bold rounded-full">HD</p>
+              </div>
         </div>
+        <!--Search-->
+     <div id="searchContainer" style="display: none;" class="w-full h-full flex flex-col relative overflow-hidden">
+      <!--Header Android-->
+      <div class="w-0 h-full fixed left-0 transition-all z-30 bg-rose-900 menu-page">
+        <div class="hidden flex-col items-center items-menu">
+          <a href="index.html" class="font-yu-mincho float-left relative text-xl text-white mt-[15px] home">Home</a>
+          <a href="series.html" class="font-yu-mincho float-left relative text-xl text-white mt-[15px] series">Series</a>
+          <a href="movie.html" class="font-yu-mincho float-left relative text-xl text-white mt-[15px] movie">Movies</a>
+          <div class="w-max h-min relative">
+            <input type="text" name="" value="" class="w-[200px] h-[25px] rounded-full text-white mt-[15px] bg-rose-800 queryInput">
+            <button class="absolute right-0 mt-[15px] searchBtn"><img src="asset/search.png" class="w-[25px] bg-rose-800 rounded-full h-[25px]" alt="" srcset=""></button>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="w-6 h-6 absolute right-[10px] top-[15px] menu-close">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>     
+        </div>   
+      </div>
+       <!--Header Tablet Laptop-->
+      <div class="flex justify-center w-full h-[90px]">
+        <div class="w-max h-min sm:absolute sm:left-[10px]">
+          <a href="" class="font-yu-mincho text-xl float-left text-white mt-[15px]">UCUPNIME</a>
+        </div>
+        <div class="w-max h-min hidden sm:grid sm:grid-flow-col sm:gap-x-4" id="navbar">
+          <a href="index.html" class="font-yu-mincho float-left relative text-xl text-white mt-[15px] home">Home</a>
+          <a href="series.html" class="font-yu-mincho float-left relative text-xl text-white mt-[15px] series">Series</a>
+          <a href="movie.html" class="font-yu-mincho float-left relative text-xl text-white mt-[15px] movie">Movies</a>
+        </div>
+        <div class="w-max h-min absolute right-[10px] hidden sm:inline-block">
+          <input type="text" name="" value="" class="w-[200px] h-[25px] rounded-full text-white mt-[15px] bg-rose-800 queryInput">
+          <button class="absolute right-0 mt-[15px] searchBtn"><img src="asset/search.png" class="w-[25px] bg-rose-800 rounded-full h-[25px]" alt="" srcset=""></button>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="w-6 h-6 mt-[15px] absolute left-[10px] menu sm:hidden">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>                
+      </div>
+      <div id="search" class="w-[95%] relative mt-[20px] gap-x-3 gap-y-5 mb-10 grid grid-cols-3 m-auto h-max sm:w-[97%] sm:gap-x-[10px] sm:grid-cols-4 md:w-[98%] md:grid-cols-4 md:gap-x-[20px] lg:w-11/12 lg:grid-cols-6 lg:gap-x-[20px] lg:gap-y-[10px] lg:h-[680px] xl:w-9/12">
+          <div class="w-[100%] h-[100%] search_warp relative">
+            <div class="w-full h-[70%] relative ">
+              <div class="absolute z-[15] right-[-8px] top-[-5px] flex items-center justify-center rounded-full w-[50px] h-[20px] bg-rose-600">
+                <img class="w-[18px] h-[18px]" src="asset/star_sries.png" alt="" srcset="">
+                <p class="starSearch text-white text-xs ml-1 font-yu-mincho"></p>
+              </div>
+              <img class="posterSearch rounded-md w-full h-full skeleton" src="" alt="" srcset="">
+              <div class="absolute z-[15] right-[-8px] bottom-[-10px] flex items-center justify-center rounded-full w-auto h-[20px] bg-rose-600">
+                <p class="episodeSearch text-white text-xs ml-1 font-yu-mincho"></p>
+              </div>
+            </div>
+            <div class="w-full h-[10%] mt-[10px] font-Tahoma">
+              <p class="premieredSearch text-yellow-500 text-sm"></p>
+              <p class="judulSearch text-white "></p>
+            </div>
+          </div>
+          <div class="w-[100%] h-[100%] search_warp relative">
+            <div class="w-full h-[70%] relative ">
+              <div class="absolute z-[15] right-[-8px] top-[-5px] flex items-center justify-center rounded-full w-[50px] h-[20px] bg-rose-600">
+                <img class="w-[18px] h-[18px]" src="asset/star_sries.png" alt="" srcset="">
+                <p class="starSearch text-white text-xs ml-1 font-yu-mincho"></p>
+              </div>
+              <img class="posterSearch rounded-md w-full h-full skeleton" src="" alt="" srcset="">
+              <div class="absolute z-[15] right-[-8px] bottom-[-10px] flex items-center justify-center rounded-full w-auto h-[20px] bg-rose-600">
+                <p class="episodeSearch text-white text-xs ml-1 font-yu-mincho"></p>
+              </div>
+            </div>
+            <div class="w-full h-[10%] mt-[10px] font-Tahoma">
+              <p class="premieredSearch text-yellow-500 text-sm"></p>
+              <p class="judulSearch text-white "></p>
+            </div>
+          </div>
+          <div class="w-[100%] h-[100%] search_warp relative">
+            <div class="w-full h-[70%] relative ">
+              <div class="absolute z-[15] right-[-8px] top-[-5px] flex items-center justify-center rounded-full w-[50px] h-[20px] bg-rose-600">
+                <img class="w-[18px] h-[18px]" src="asset/star_sries.png" alt="" srcset="">
+                <p class="starSearch text-white text-xs ml-1 font-yu-mincho"></p>
+              </div>
+              <img class="posterSearch rounded-md w-full h-full skeleton" src="" alt="" srcset="">
+              <div class="absolute z-[15] right-[-8px] bottom-[-10px] flex items-center justify-center rounded-full w-auto h-[20px] bg-rose-600">
+                <p class="episodeSearch text-white text-xs ml-1 font-yu-mincho"></p>
+              </div>
+            </div>
+            <div class="w-full h-[10%] mt-[10px] font-Tahoma">
+              <p class="premieredSearch text-yellow-500 text-sm"></p>
+              <p class="judulSearch text-white "></p>
+            </div>
+          </div>
+          <div class="w-[100%] h-[100%] search_warp relative">
+            <div class="w-full h-[70%] relative ">
+              <div class="absolute z-[15] right-[-8px] top-[-5px] flex items-center justify-center rounded-full w-[50px] h-[20px] bg-rose-600">
+                <img class="w-[18px] h-[18px]" src="asset/star_sries.png" alt="" srcset="">
+                <p class="starSearch text-white text-xs ml-1 font-yu-mincho"></p>
+              </div>
+              <img class="posterSearch rounded-md w-full h-full skeleton" src="" alt="" srcset="">
+              <div class="absolute z-[15] right-[-8px] bottom-[-10px] flex items-center justify-center rounded-full w-auto h-[20px] bg-rose-600">
+                <p class="episodeSearch text-white text-xs ml-1 font-yu-mincho"></p>
+              </div>
+            </div>
+            <div class="w-full h-[10%] mt-[10px] font-Tahoma">
+              <p class="premieredSearch text-yellow-500 text-sm"></p>
+              <p class="judulSearch text-white "></p>
+            </div>
+          </div>
+          <div class="w-[100%] h-[100%] search_warp relative">
+            <div class="w-full h-[70%] relative ">
+              <div class="absolute z-[15] right-[-8px] top-[-5px] flex items-center justify-center rounded-full w-[50px] h-[20px] bg-rose-600">
+                <img class="w-[18px] h-[18px]" src="asset/star_sries.png" alt="" srcset="">
+                <p class="starSearch text-white text-xs ml-1 font-yu-mincho"></p>
+              </div>
+              <img class="posterSearch rounded-md w-full h-full skeleton" src="" alt="" srcset="">
+              <div class="absolute z-[15] right-[-8px] bottom-[-10px] flex items-center justify-center rounded-full w-auto h-[20px] bg-rose-600">
+                <p class="episodeSearch text-white text-xs ml-1 font-yu-mincho"></p>
+              </div>
+            </div>
+            <div class="w-full h-[10%] mt-[10px] font-Tahoma">
+              <p class="premieredSearch text-yellow-500 text-sm"></p>
+              <p class="judulSearch text-white "></p>
+            </div>
+          </div>
+          <div class="w-[100%] h-[100%] search_warp relative">
+            <div class="w-full h-[70%] relative ">
+              <div class="absolute z-[15] right-[-8px] top-[-5px] flex items-center justify-center rounded-full w-[50px] h-[20px] bg-rose-600">
+                <img class="w-[18px] h-[18px]" src="asset/star_sries.png" alt="" srcset="">
+                <p class="starSearch text-white text-xs ml-1 font-yu-mincho"></p>
+              </div>
+              <img class="posterSearch rounded-md w-full h-full skeleton" src="" alt="" srcset="">
+              <div class="absolute z-[15] right-[-8px] bottom-[-10px] flex items-center justify-center rounded-full w-auto h-[20px] bg-rose-600">
+                <p class="episodeSearch text-white text-xs ml-1 font-yu-mincho"></p>
+              </div>
+            </div>
+            <div class="w-full h-[10%] mt-[10px] font-Tahoma">
+              <p class="premieredSearch text-yellow-500 text-sm"></p>
+              <p class="judulSearch text-white "></p>
+            </div>
+          </div>
+          <div class="w-[100%] h-[100%] search_warp relative">
+            <div class="w-full h-[70%] relative ">
+              <div class="absolute z-[15] right-[-8px] top-[-5px] flex items-center justify-center rounded-full w-[50px] h-[20px] bg-rose-600">
+                <img class="w-[18px] h-[18px]" src="asset/star_sries.png" alt="" srcset="">
+                <p class="starSearch text-white text-xs ml-1 font-yu-mincho"></p>
+              </div>
+              <img class="posterSearch rounded-md w-full h-full skeleton" src="" alt="" srcset="">
+              <div class="absolute z-[15] right-[-8px] bottom-[-10px] flex items-center justify-center rounded-full w-auto h-[20px] bg-rose-600">
+                <p class="episodeSearch text-white text-xs ml-1 font-yu-mincho"></p>
+              </div>
+            </div>
+            <div class="w-full h-[10%] mt-[10px] font-Tahoma">
+              <p class="premieredSearch text-yellow-500 text-sm"></p>
+              <p class="judulSearch text-white "></p>
+            </div>
+          </div>
+          <div class="w-[100%] h-[100%] search_warp relative">
+            <div class="w-full h-[70%] relative ">
+              <div class="absolute z-[15] right-[-8px] top-[-5px] flex items-center justify-center rounded-full w-[50px] h-[20px] bg-rose-600">
+                <img class="w-[18px] h-[18px]" src="asset/star_sries.png" alt="" srcset="">
+                <p class="starSearch text-white text-xs ml-1 font-yu-mincho"></p>
+              </div>
+              <img class="posterSearch rounded-md w-full h-full skeleton" src="" alt="" srcset="">
+              <div class="absolute z-[15] right-[-8px] bottom-[-10px] flex items-center justify-center rounded-full w-auto h-[20px] bg-rose-600">
+                <p class="episodeSearch text-white text-xs ml-1 font-yu-mincho"></p>
+              </div>
+            </div>
+            <div class="w-full h-[10%] mt-[10px] font-Tahoma">
+              <p class="premieredSearch text-yellow-500 text-sm"></p>
+              <p class="judulSearch text-white "></p>
+            </div>
+          </div>
+          <div class="w-[100%] h-[100%] search_warp relative">
+            <div class="w-full h-[70%] relative ">
+              <div class="absolute z-[15] right-[-8px] top-[-5px] flex items-center justify-center rounded-full w-[50px] h-[20px] bg-rose-600">
+                <img class="w-[18px] h-[18px]" src="asset/star_sries.png" alt="" srcset="">
+                <p class="starSearch text-white text-xs ml-1 font-yu-mincho"></p>
+              </div>
+              <img class="posterSearch rounded-md w-full h-full skeleton" src="" alt="" srcset="">
+              <div class="absolute z-[15] right-[-8px] bottom-[-10px] flex items-center justify-center rounded-full w-auto h-[20px] bg-rose-600">
+                <p class="episodeSearch text-white text-xs ml-1 font-yu-mincho"></p>
+              </div>
+            </div>
+            <div class="w-full h-[10%] mt-[10px] font-Tahoma">
+              <p class="premieredSearch text-yellow-500 text-sm"></p>
+              <p class="judulSearch text-white "></p>
+            </div>
+          </div>
+          <div class="w-[100%] h-[100%] search_warp relative">
+            <div class="w-full h-[70%] relative ">
+              <div class="absolute z-[15] right-[-8px] top-[-5px] flex items-center justify-center rounded-full w-[50px] h-[20px] bg-rose-600">
+                <img class="w-[18px] h-[18px]" src="asset/star_sries.png" alt="" srcset="">
+                <p class="starSearch text-white text-xs ml-1 font-yu-mincho"></p>
+              </div>
+              <img class="posterSearch rounded-md w-full h-full skeleton" src="" alt="" srcset="">
+              <div class="absolute z-[15] right-[-8px] bottom-[-10px] flex items-center justify-center rounded-full w-auto h-[20px] bg-rose-600">
+                <p class="episodeSearch text-white text-xs ml-1 font-yu-mincho"></p>
+              </div>
+            </div>
+            <div class="w-full h-[10%] mt-[10px] font-Tahoma">
+              <p class="premieredSearch text-yellow-500 text-sm"></p>
+              <p class="judulSearch text-white "></p>
+            </div>
+          </div>
+          <div class="w-[100%] h-[100%] search_warp relative">
+            <div class="w-full h-[70%] relative ">
+              <div class="absolute z-[15] right-[-8px] top-[-5px] flex items-center justify-center rounded-full w-[50px] h-[20px] bg-rose-600">
+                <img class="w-[18px] h-[18px]" src="asset/star_sries.png" alt="" srcset="">
+                <p class="starSearch text-white text-xs ml-1 font-yu-mincho"></p>
+              </div>
+              <img class="posterSearch rounded-md w-full h-full skeleton" src="" alt="" srcset="">
+              <div class="absolute z-[15] right-[-8px] bottom-[-10px] flex items-center justify-center rounded-full w-auto h-[20px] bg-rose-600">
+                <p class="episodeSearch text-white text-xs ml-1 font-yu-mincho"></p>
+              </div>
+            </div>
+            <div class="w-full h-[10%] mt-[10px] font-Tahoma">
+              <p class="premieredSearch text-yellow-500 text-sm"></p>
+              <p class="judulSearch text-white "></p>
+            </div>
+          </div>
+          <div class="w-[100%] h-[100%] search_warp relative">
+            <div class="w-full h-[70%] relative ">
+              <div class="absolute z-[15] right-[-8px] top-[-5px] flex items-center justify-center rounded-full w-[50px] h-[20px] bg-rose-600">
+                <img class="w-[18px] h-[18px]" src="asset/star_sries.png" alt="" srcset="">
+                <p class="starSearch text-white text-xs ml-1 font-yu-mincho"></p>
+              </div>
+              <img class="posterSearch rounded-md w-full h-full skeleton" src="" alt="" srcset="">
+              <div class="absolute z-[15] right-[-8px] bottom-[-10px] flex items-center justify-center rounded-full w-auto h-[20px] bg-rose-600">
+                <p class="episodeSearch text-white text-xs ml-1 font-yu-mincho"></p>
+              </div>
+            </div>
+            <div class="w-full h-[10%] mt-[10px] font-Tahoma">
+              <p class="premieredSearch text-yellow-500 text-sm"></p>
+              <p class="judulSearch text-white "></p>
+            </div>
+          </div>
+      </div>
+    </div>
     <script src="playerMovie.js"></script>
 </body>
 </html>
