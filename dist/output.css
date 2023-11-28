@@ -704,6 +704,10 @@ video {
   right: -18px;
 }
 
+.right-\[40px\]{
+  right: 40px;
+}
+
 .z-30{
   z-index: 30;
 }
@@ -999,6 +1003,18 @@ video {
 .w-max{
   width: -moz-max-content;
   width: max-content;
+}
+
+.w-\[80\%\]{
+  width: 80%;
+}
+
+.w-\[50\%\]{
+  width: 50%;
+}
+
+.w-\[60\%\]{
+  width: 60%;
 }
 
 .transform{
@@ -1331,6 +1347,22 @@ video {
     right: -80px;
   }
 
+  .sm\:right-\[-30px\]{
+    right: -30px;
+  }
+
+  .sm\:right-\[\]{
+    right: ;
+  }
+
+  .sm\:right-0{
+    right: 0px;
+  }
+
+  .sm\:right-\[10px\]{
+    right: 10px;
+  }
+
   .sm\:inline-block{
     display: inline-block;
   }
@@ -1451,6 +1483,18 @@ video {
     margin-left: 10px;
   }
 
+  .lg\:ml-\[30px\]{
+    margin-left: 30px;
+  }
+
+  .lg\:ml-\[50px\]{
+    margin-left: 50px;
+  }
+
+  .lg\:ml-\[60px\]{
+    margin-left: 60px;
+  }
+
   .lg\:line-clamp-\[20\]{
     overflow: hidden;
     display: -webkit-box;
@@ -1480,6 +1524,10 @@ video {
 
   .lg\:w-\[70\%\]{
     width: 70%;
+  }
+
+  .lg\:w-\[55\%\]{
+    width: 55%;
   }
 
   .lg\:grid-cols-6{
@@ -1518,6 +1566,10 @@ video {
     left: 70px;
   }
 
+  .xl\:right-\[20px\]{
+    right: 20px;
+  }
+
   .xl\:line-clamp-\[18\]{
     overflow: hidden;
     display: -webkit-box;
@@ -1551,6 +1603,10 @@ video {
 
   .xl\:w-\[80\%\]{
     width: 80%;
+  }
+
+  .xl\:w-\[60\%\]{
+    width: 60%;
   }
 
   .xl\:text-base{

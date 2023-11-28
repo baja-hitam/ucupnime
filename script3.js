@@ -190,40 +190,40 @@ async function fetchDataFromApiAnime(page) {
 async function getDataFromApiSeries() {
     const data = await fetchDataFromApiAnime(1);
     for (let i = 0; i < 12; i++) {
-      sta[i].innerHTML = `${data.list[i].star}`;
-      eps[i].innerHTML = `${data.list[i].episode}`;
-      jdl[i].innerHTML = `${data.list[i].title}`;
-      pstOngoing[i].src = `${data.list[i].poster}`;
-    }
-    for (let i = 0; i < 12; i++) {
       const data1= await fetchDataFromApiDetailAnime(data.list[i].slug);
-      premiered.push(data1.detailsList[5].title);
-      pred[i].innerHTML = `${premiered[i]} / Sub Indo`;
       seriesWarp[i].addEventListener('click',async function() {
         localStorage.setItem('datakey',JSON.stringify(data.list[i].slug));
         window.location = "detail.html";
       })
+      premiered.push(data1.detailsList[5].title);
+    }
+    for (let i = 0; i < 12; i++) {
+      sta[i].innerHTML = `${data.list[i].star}`;
+      eps[i].innerHTML = `${data.list[i].episode}`;
+      jdl[i].innerHTML = `${data.list[i].title}`;
+      pstOngoing[i].src = `${data.list[i].poster}`;
+      pred[i].innerHTML = `${premiered[i]} / Sub Indo`;
     }
   }
 
   async function getDataFromApiMovie() {
     const data = await fetchDataFromApiMovie(1);
     for (let i = 0; i < 12; i++) {
-      staMovie[i].innerHTML = `${data.list[i].star}`;
-      jdlMovie[i].innerHTML = `${data.list[i].title}`;
-      pstMovie[i].src = `${data.list[i].poster}`;
+      moviesWarp[i].addEventListener('click',async function() {
+        localStorage.setItem('moviePlayer',JSON.stringify(data.list[i].slug));
+        window.location = "player_movie.html";
+      })
     }
     for (let i = 0; i < 12; i++) {
       const data1= await fetchDataFromApiDetailMovie(data.list[i].slug);
       premieredMovie.push(data1.year);
+  }
+    for (let i = 0; i < 12; i++) {
+      staMovie[i].innerHTML = `${data.list[i].star}`;
+      jdlMovie[i].innerHTML = `${data.list[i].title}`;
+      pstMovie[i].src = `${data.list[i].poster}`;
       predMovie[i].innerHTML = `${premieredMovie[i]}`;
-  }
-  for (let i = 0; i < 12; i++) {
-    moviesWarp[i].addEventListener('click',async function() {
-      localStorage.setItem('moviePlayer',JSON.stringify(data.list[i].slug));
-      window.location = "player_movie.html";
-    })
-  }
+    }
   }
   async function getDataFilter() {
     for (let page = 1; page <= totalRequests; page++) {

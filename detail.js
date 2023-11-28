@@ -24,7 +24,6 @@ async function fetchDataFromApiDetailAnime(slug) {
   };
   async function getDataFromApiDetailAnime() {
     const data = await fetchDataFromApiDetailAnime(saveData);
-    console.log(data);
     jdlDetail.innerHTML = `${data.title}`;
     wrpContainer.src = `${data.poster}`;
     pstDetail.src = `${data.poster}`;
