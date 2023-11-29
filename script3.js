@@ -212,21 +212,19 @@ async function getDataFromApiSeries() {
   async function getDataFromApiMovie() {
     const data = await fetchDataFromApiMovie(1);
     for (let i = 0; i < 12; i++) {
-      moviesWarp[i].addEventListener('click',async function() {
+      staMovie[i].innerHTML = `${data.list[i].star}`;
+      jdlMovie[i].innerHTML = `${data.list[i].title}`;
+      pstMovie[i].src = `${data.list[i].poster}`;
+        moviesWarp[i].addEventListener('click',async function() {
         localStorage.setItem('moviePlayer',JSON.stringify(data.list[i].slug));
         window.location = "player_movie.html";
       })
     }
-    for (let i = 0; i < 12; i++) {
+          for (let i = 0; i < 12; i++) {
       const data1= await fetchDataFromApiDetailMovie(data.list[i].slug);
       premieredMovie.push(data1.year);
+              predMovie[i].innerHTML = `${premieredMovie[i]}`;
   }
-    for (let i = 0; i < 12; i++) {
-      staMovie[i].innerHTML = `${data.list[i].star}`;
-      jdlMovie[i].innerHTML = `${data.list[i].title}`;
-      pstMovie[i].src = `${data.list[i].poster}`;
-      predMovie[i].innerHTML = `${premieredMovie[i]}`;
-    }
   }
   async function getDataFilter() {
     for (let page = 1; page <= totalRequests; page++) {
