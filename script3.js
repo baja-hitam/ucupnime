@@ -197,8 +197,8 @@ async function getDataFromApiSeries() {
       seriesWarp[i].addEventListener('click',async function() {
         localStorage.setItem('datakey',JSON.stringify(data.list[i].slug));
         window.location = "detail.html";
-      })
-    }
+      });
+    };
     for (let i = 0; i < 12;i++){
       const data1= await fetchDataFromApiDetailAnime(data.list[i].slug);
       premiered.push(data1.detailsList[5].title);
