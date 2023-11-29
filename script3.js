@@ -190,18 +190,16 @@ async function fetchDataFromApiAnime(page) {
 async function getDataFromApiSeries() {
     const data = await fetchDataFromApiAnime(1);
     for (let i = 0; i < 12; i++) {
+      pstOngoing[i].src = `${data.list[i].poster}`;
+      sta[i].innerHTML = `${data.list[i].star}`;
+      eps[i].innerHTML = `${data.list[i].episode}`;
+      jdl[i].innerHTML = `${data.list[i].title}`;
       const data1= await fetchDataFromApiDetailAnime(data.list[i].slug);
       seriesWarp[i].addEventListener('click',async function() {
         localStorage.setItem('datakey',JSON.stringify(data.list[i].slug));
         window.location = "detail.html";
       })
       premiered.push(data1.detailsList[5].title);
-    }
-    for (let i = 0; i < 12; i++) {
-      sta[i].innerHTML = `${data.list[i].star}`;
-      eps[i].innerHTML = `${data.list[i].episode}`;
-      jdl[i].innerHTML = `${data.list[i].title}`;
-      pstOngoing[i].src = `${data.list[i].poster}`;
       pred[i].innerHTML = `${premiered[i]} / Sub Indo`;
     }
   }
