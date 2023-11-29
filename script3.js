@@ -3,12 +3,15 @@ const pageName = pathName.split("/").pop();
 
 if (pageName === 'index.html') {
     document.querySelector("#navbar .home").classList.add("active");
+    document.querySelector(".home").classList.add("active");
 }
 if (pageName === 'series.html') {
     document.querySelector("#navbar .series").classList.add("active");
+    document.querySelector(".series").classList.add("active");
 }
 if (pageName === 'movie.html') {
     document.querySelector("#navbar .movie").classList.add("active");
+    document.querySelector(".movie").classList.add("active");
 }
 
 const pst = document.querySelectorAll(".poster")
