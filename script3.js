@@ -125,8 +125,8 @@ menu.forEach((f)=>{
     itemsMenu.forEach((d)=>{
       d.style.display = 'flex';
     })
+      homeContainer.style.height = '100vh';
     })
-    homeContainer.style.height = '100vh';
 })
 menuClose.forEach((g)=>{
   g.addEventListener(('click'),()=>{
