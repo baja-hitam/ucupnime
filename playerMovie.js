@@ -17,6 +17,7 @@ const staSearch = document.querySelectorAll('.starSearch');
 const pstSearch = document.querySelectorAll(".posterSearch");
 const searchWarp = document.querySelectorAll('.search_warp');
 const searchContainer = document.getElementById('searchContainer');
+const contaner = document.getElementById('container');
 const playerMovieContainer = document.getElementById('playerMovieContainer');
 const searchBtn = document.querySelectorAll('.searchBtn');
 const queryInput = document.querySelectorAll('.queryInput');
