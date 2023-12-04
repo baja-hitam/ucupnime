@@ -540,9 +540,9 @@ video {
   width: 100%;
 }
 
-@media (min-width: 425px){
+@media (min-width: 400px){
   .container{
-    max-width: 425px;
+    max-width: 400px;
   }
 }
 
@@ -630,10 +630,6 @@ video {
 
 .right-\[-10px\]{
   right: -10px;
-}
-
-.right-\[-18px\]{
-  right: -18px;
 }
 
 .right-\[-8px\]{
@@ -764,6 +760,10 @@ video {
   margin-left: 0.25rem;
 }
 
+.ml-2{
+  margin-left: 0.5rem;
+}
+
 .ml-5{
   margin-left: 1.25rem;
 }
@@ -798,14 +798,6 @@ video {
 
 .mt-\[5px\]{
   margin-top: 5px;
-}
-
-.ml-2{
-  margin-left: 0.5rem;
-}
-
-.box-border{
-  box-sizing: border-box;
 }
 
 .line-clamp-1{
@@ -1021,10 +1013,6 @@ video {
   align-items: center;
 }
 
-.justify-start{
-  justify-content: flex-start;
-}
-
 .justify-center{
   justify-content: center;
 }
@@ -1047,16 +1035,16 @@ video {
        column-gap: 1rem;
 }
 
+.gap-y-2{
+  row-gap: 0.5rem;
+}
+
 .gap-y-4{
   row-gap: 1rem;
 }
 
 .gap-y-5{
   row-gap: 1.25rem;
-}
-
-.gap-y-2{
-  row-gap: 0.5rem;
 }
 
 .overflow-hidden{
@@ -1166,18 +1154,6 @@ video {
   padding-right: 20px;
 }
 
-.pl-\[10px\]{
-  padding-left: 10px;
-}
-
-.pr-\[10px\]{
-  padding-right: 10px;
-}
-
-.pr-\[5px\]{
-  padding-right: 5px;
-}
-
 .font-Poppins{
   font-family: Poppins;
 }
@@ -1195,16 +1171,16 @@ video {
   line-height: 2rem;
 }
 
+.text-\[10px\]{
+  font-size: 10px;
+}
+
 .text-\[15px\]{
   font-size: 15px;
 }
 
 .text-\[20px\]{
   font-size: 20px;
-}
-
-.text-\[25px\]{
-  font-size: 25px;
 }
 
 .text-sm{
@@ -1220,10 +1196,6 @@ video {
 .text-xs{
   font-size: 0.75rem;
   line-height: 1rem;
-}
-
-.text-\[10px\]{
-  font-size: 10px;
 }
 
 .font-bold{
@@ -1250,10 +1222,6 @@ video {
 .text-yellow-500{
   --tw-text-opacity: 1;
   color: rgb(234 179 8 / var(--tw-text-opacity));
-}
-
-.text-\[\]{
-  color: ;
 }
 
 .opacity-0{
@@ -1302,13 +1270,9 @@ video {
   src: local('Yu Mincho'), url(/fonts/yumin.ttf) format('ttf');
 }
 
-@media (min-width: 425px){
+@media (min-width: 400px){
   .android\:ml-5{
     margin-left: 1.25rem;
-  }
-
-  .android\:grid{
-    display: grid;
   }
 
   .android\:grid-cols-3{
@@ -1323,18 +1287,13 @@ video {
     row-gap: 1rem;
   }
 
-  .android\:text-sm{
-    font-size: 0.875rem;
-    line-height: 1.25rem;
+  .android\:text-\[25px\]{
+    font-size: 25px;
   }
 
   .android\:text-base{
     font-size: 1rem;
     line-height: 1.5rem;
-  }
-
-  .android\:text-\[25px\]{
-    font-size: 25px;
   }
 }
 

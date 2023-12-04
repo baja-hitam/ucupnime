@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        'android': '425px',
+        'android': '400px',
       },
       backgroundImage: {
         'manga': "url('/asset/2.jpg')",
