@@ -45,6 +45,7 @@ const searchBtn = document.querySelectorAll('.searchBtn');
 const queryInput = document.querySelectorAll('.queryInput');
 const homeContainer = document.getElementById('homeContainer');
 const searchContainer = document.getElementById('searchContainer');
+const container = document.getElementById('containerv');
 const namaSearch = document.getElementById('namaSearch');
 const menu = document.querySelectorAll('.menu');
 const menuPage = document.querySelectorAll('.menu-page');
