@@ -3,12 +3,15 @@ const pageName = pathName.split("/").pop();
 
 if (pageName === 'index.html') {
     document.querySelector("#navbar .home").classList.add("active");
+    document.querySelector(".home").classList.add("active");
 }
 if (pageName === 'series.html') {
     document.querySelector("#navbar .series").classList.add("active");
+    document.querySelector(".series").classList.add("active");
 }
 if (pageName === 'movie.html') {
     document.querySelector("#navbar .movie").classList.add("active");
+    document.querySelector(".movie").classList.add("active");
 }
 
 const pst = document.querySelectorAll(".poster")
@@ -192,18 +195,18 @@ async function fetchDataFromApiAnime(page) {
 async function getDataFromApiSeries() {
     const data = await fetchDataFromApiAnime(1);
     for (let i = 0; i < 12; i++) {
-      const data1= await fetchDataFromApiDetailAnime(data.list[i].slug);
-      seriesWarp[i].addEventListener('click',async function() {
-        localStorage.setItem('datakey',JSON.stringify(data.list[i].slug));
-        window.location = "detail.html";
-      })
-      premiered.push(data1.detailsList[5].title);
-    }
-    for (let i = 0; i < 12; i++) {
+      pstOngoing[i].src = `${data.list[i].poster}`;
       sta[i].innerHTML = `${data.list[i].star}`;
       eps[i].innerHTML = `${data.list[i].episode}`;
       jdl[i].innerHTML = `${data.list[i].title}`;
-      pstOngoing[i].src = `${data.list[i].poster}`;
+      seriesWarp[i].addEventListener('click',async function() {
+        localStorage.setItem('datakey',JSON.stringify(data.list[i].slug));
+        window.location = "detail.html";
+      });
+    };
+    for (let i = 0; i < 12;i++){
+      const data1= await fetchDataFromApiDetailAnime(data.list[i].slug);
+      premiered.push(data1.detailsList[5].title);
       pred[i].innerHTML = `${premiered[i]} / Sub Indo`;
     }
   }
@@ -211,21 +214,19 @@ async function getDataFromApiSeries() {
   async function getDataFromApiMovie() {
     const data = await fetchDataFromApiMovie(1);
     for (let i = 0; i < 12; i++) {
-      moviesWarp[i].addEventListener('click',async function() {
+      staMovie[i].innerHTML = `${data.list[i].star}`;
+      jdlMovie[i].innerHTML = `${data.list[i].title}`;
+      pstMovie[i].src = `${data.list[i].poster}`;
+        moviesWarp[i].addEventListener('click',async function() {
         localStorage.setItem('moviePlayer',JSON.stringify(data.list[i].slug));
         window.location = "player_movie.html";
       })
     }
-    for (let i = 0; i < 12; i++) {
+          for (let i = 0; i < 12; i++) {
       const data1= await fetchDataFromApiDetailMovie(data.list[i].slug);
       premieredMovie.push(data1.year);
+              predMovie[i].innerHTML = `${premieredMovie[i]}`;
   }
-    for (let i = 0; i < 12; i++) {
-      staMovie[i].innerHTML = `${data.list[i].star}`;
-      jdlMovie[i].innerHTML = `${data.list[i].title}`;
-      pstMovie[i].src = `${data.list[i].poster}`;
-      predMovie[i].innerHTML = `${premieredMovie[i]}`;
-    }
   }
   async function getDataFilter() {
     for (let page = 1; page <= totalRequests; page++) {
