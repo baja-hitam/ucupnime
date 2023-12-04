@@ -3,6 +3,9 @@ module.exports = {
   content: ["*"],
   theme: {
     extend: {
+      screens: {
+        'android': '425px',
+      },
       backgroundImage: {
         'manga': "url('/asset/2.jpg')",
         'komik': "url('/asset/4.jpg')",

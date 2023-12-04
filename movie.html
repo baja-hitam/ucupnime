@@ -10,7 +10,7 @@
 <body class="bg-gradient-to-b from-rose-900 to-[#0F1219] to-100%">
     <div id="movieContainer" class="w-full h-full flex flex-col items-center overflow-hidden">
         <!--Header android-->
-        <div class="w-0 h-full fixed left-0 transition-all z-30 bg-rose-900 menu-page">
+        <div class="w-0 h-full fixed left-0 transition-all z-30 bg-rose-900 menu-page sm:hidden">
           <div class="hidden flex-col items-center items-menu">
             <a href="index.html" class="font-yu-mincho float-left relative text-xl text-white mt-[15px] home">Home</a>
             <a href="series.html" class="font-yu-mincho float-left relative text-xl text-white mt-[15px] series">Series</a>
@@ -45,7 +45,7 @@
           </div>
           </div>
         
-          <div id="ongoing" class="w-[95%] relative gap-x-3 gap-y-5 mb-10 grid grid-cols-3 justify-center box-border h-max sm:w-[97%] sm:gap-x-[10px] sm:grid-cols-4 md:w-[98%] md:grid-cols-4 md:gap-x-[20px] lg:w-11/12 lg:grid-cols-6 lg:gap-x-[20px] lg:gap-y-[10px] lg:h-[680px] xl:w-9/12">
+          <div id="ongoing" class="w-[95%] relative gap-x-3 gap-y-2 mb-10 grid grid-cols-2 justify-center h-max android:grid-cols-3 android:gap-y-4 sm:w-[97%] sm:gap-x-[10px] sm:grid-cols-4 md:w-[98%] md:grid-cols-4 md:gap-x-[20px] lg:w-11/12 lg:grid-cols-6 lg:gap-x-[20px] lg:gap-y-[10px] lg:h-[680px] xl:w-9/12">
             <div class="w-[100%] h-[100%] movies_warp relative">
               <div class="w-full h-[70%] relative ">
                 <div class="absolute z-[15] right-[-8px] top-[-5px] flex items-center justify-center rounded-full w-[50px] h-[20px] bg-rose-600">

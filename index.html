@@ -10,7 +10,7 @@
 <body id="containerv" class="bg-gradient-to-b from-rose-900 to-[#0F1219] to-100%">
     <div id="homeContainer" class="w-full h-full flex flex-col items-center">
       <!--Header Android-->
-      <div class="w-0 h-full fixed left-0 transition-all z-30 bg-rose-900 menu-page">
+      <div class="w-0 h-full fixed left-0 transition-all z-30 bg-rose-900 menu-page sm:hidden">
         <div class="hidden flex-col items-center items-menu">
           <a href="index.html" class="font-yu-mincho float-left relative text-xl text-white mt-[15px] home active">Home</a>
           <a href="series.html" class="font-yu-mincho float-left relative text-xl text-white mt-[15px] series">Series</a>
@@ -291,13 +291,13 @@
         </div>
         <!--end-->
         <!--Series-->
-        <div class="mt-7 w-[95%] relative sm:w-[97%] md:w-[98%] lg:w-11/12 xl:w-9/12">
-          <p class="text-white font-yu-mincho relative left-0 top-0 text-[25px]">Discover Series</p>
+        <div class="mt-7 w-[95%] relative flex flex-row justify-between items-center sm:w-[97%] md:w-[98%] lg:w-11/12 xl:w-9/12">
+          <p class="text-white font-yu-mincho text-[20px] android:text-[25px]">Discover Series</p>
           <a href="series.html">
-            <p class="text-white font-yu-mincho absolute right-0 top-2 text-[15px] px-6 rounded-full bg-rose-600">VIEW ALL</p>
+            <p class="text-white font-yu-mincho text-[15px] px-6 rounded-full bg-rose-600">VIEW ALL</p>
           </a>
         </div>      
-        <div id="ongoing" class="w-[95%] relative mt-[20px] gap-x-3 gap-y-5 mb-10 grid grid-cols-3 justify-center box-border h-max sm:w-[97%] sm:gap-x-[10px] sm:grid-cols-4 md:w-[98%] md:grid-cols-4 md:gap-x-[20px] lg:w-11/12 lg:grid-cols-6 lg:gap-x-[20px] lg:gap-y-[10px] lg:h-[680px] xl:w-9/12">
+        <div id="ongoing" class="w-[95%] relative mt-[20px] mb-[10px] gap-x-3 grid grid-cols-2 justify-center h-max android:grid-cols-3 sm:w-[97%] sm:gap-x-[10px] sm:grid-cols-4 md:w-[98%] md:grid-cols-4 md:gap-x-[20px] lg:w-11/12 lg:grid-cols-6 lg:gap-x-[20px] lg:h-[680px] xl:w-9/12">
             <div class="w-[100%] h-[100%] series_warp relative">
               <div class="w-full h-[70%] relative lg:h-[60%] xl:h-[70%]">
                 <div class="absolute z-[15] right-[-8px] top-[-5px] flex items-center justify-center rounded-full w-[50px] h-[20px] bg-rose-600">
@@ -492,13 +492,13 @@
             </div>
         </div>
         <!--Movie-->
-        <div class="mt-7 w-[95%] relative sm:w-[97%] md:w-[98%] lg:w-11/12 xl:w-9/12">
-          <p class="text-white font-yu-mincho relative left-0 top-0 text-[25px]">Discover Movies</p>
+        <div class="mt-7 w-[95%] relative flex flex-row items-center justify-between sm:w-[97%] md:w-[98%] lg:w-11/12 xl:w-9/12">
+          <p class="text-white font-yu-mincho relative text-[20px] android:text-[25px]">Discover Movies</p>
           <a href="movie.html">
-            <p class="text-white font-yu-mincho absolute right-0 top-2 text-[15px] px-6 rounded-full bg-rose-600">VIEW ALL</p>
+            <p class="text-white font-yu-mincho text-[15px] px-6 rounded-full bg-rose-600">VIEW ALL</p>
           </a>
         </div>      
-        <div id="movie" class="w-[95%] relative mt-[20px] grid grid-cols-3 gap-x-3 gap-y-3 justify-center box-border h-min sm:w-[97%] sm:gap-x-[10px] sm:grid-cols-4 md:w-[98%] md:grid-cols-4 md:gap-x-[20px] lg:w-11/12 xl:w-9/12 lg:grid-cols-6 lg:gap-x-[20px] lg:gap-y-[10px] lg:h-[680px]">
+        <div id="movie" class="w-[95%] relative mt-[20px] grid gap-x-3 h-min justify-center grid-cols-2 android:grid-cols-3 sm:w-[97%] sm:gap-x-[10px] sm:grid-cols-4 md:w-[98%] md:grid-cols-4 md:gap-x-[20px] lg:w-11/12 xl:w-9/12 lg:grid-cols-6 lg:gap-x-[20px] lg:gap-y-[10px] lg:h-[680px]">
             <div class="w-[100%] movies_warp h-[100%] relative">
               <div class="w-full h-[70%] relative rounded-md lg:h-[60%] xl:h-[70%]">
               <img class="poster_movie w-full h-full rounded-md skeleton" src="" alt="" srcset="">

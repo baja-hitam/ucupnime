@@ -173,7 +173,7 @@
   .pagination ul li{
     color: rgb(236, 18, 80);
     list-style: none;
-    line-height: 45px;
+    line-height: 35px;
     text-align: center;
     font-size: 18px;
     font-weight: 500;
@@ -183,10 +183,10 @@
   }
   .pagination ul li.numb{
     list-style: none;
-    height: 45px;
-    width: 45px;
+    height: 35px;
+    width: 30px;
     margin: 0 3px;
-    line-height: 45px;
+    line-height: 35px;
     border-radius: 50%;
   }
   .pagination ul li.numb.first{
@@ -210,3 +210,13 @@
     color: #fff;
     background: rgb(206, 17, 70);
   }
+  @media only screen and (min-width: 425px) {
+    .pagination ul li{
+      line-height: 45px;
+    }
+    .pagination ul li.numb{
+      width: 45px;
+      height: 45px;
+      line-height: 45px;
+    }
+    }

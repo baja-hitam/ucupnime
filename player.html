@@ -13,7 +13,7 @@
         </div>
         <img src="" alt="" srcset="" id="poster" class="w-full h-full absolute z-[1] top-0 object-cover">
         <!--Header android-->
-        <div class="w-0 h-full fixed left-0 transition-all z-30 bg-rose-900 menu-page">
+        <div class="w-0 h-full fixed left-0 transition-all z-30 bg-rose-900 menu-page sm:hidden">
           <div class="hidden flex-col items-center items-menu">
             <a href="index.html" class="font-yu-mincho float-left relative text-xl text-white mt-[15px] home">Home</a>
             <a href="series.html" class="font-yu-mincho float-left relative text-xl text-white mt-[15px] series">Series</a>
@@ -52,13 +52,13 @@
             <div class="w-full bg-black relative h-[400px] lg:h-[500px] xl:h-[600px]">
             <iframe id="player" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" scrolling="no" allowfullscreen></iframe>
             </div>
-              <div class="w-[90%] relative flex flex-col items-center justify-center top-[210px] h-max sm:w-[70%] lg:w-[70%] lg:flex-row lg:items-start xl:w-[80%]">
+              <div class="w-[90%] relative flex flex-col items-start justify-center top-[210px] h-max android:items-center sm:w-[70%] lg:w-[70%] lg:flex-row lg:items-start xl:w-[80%]">
                 <div id="qualityContainer" style="display: none;" class="absolute top-[-210px] left-0 text-white sm:left-[-80px] md:left-[-100px] lg:left-0">
                     <h3 class="mb-2">Resolution</h3>
                     <div id="serverSelect" class="grid grid-cols-2 gap-y-4 sm:grid-cols-3 md:grid-cols-4"></div>
                     <a href="" id="downloadButton" target="_blank">Download</a>
                 </div>
-                <div class="w-auto grid grid-cols-1 justify-items-center absolute top-0 text-white z-[5] h-auto right-[-18px] md:top-[-160px] sm:right-[-80px] md:right-[-100px]">
+                <div class="w-auto grid grid-cols-1 justify-items-center absolute top-0 text-white z-[5] h-auto right-[-10px] md:top-[-160px] sm:right-[-80px] md:right-[-100px]">
                   <p class="font-Tahoma font-extrabold" id="score"></p>
                   <p id="tittle_score" class="text-sm sm:text-base"></p>
                   <p id="episod" class="mt-4 font-Tahoma font-extrabold"></p>
