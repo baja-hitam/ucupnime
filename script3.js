@@ -122,6 +122,7 @@ menu.forEach((f)=>{
     itemsMenu.forEach((d)=>{
       d.style.display = 'flex';
     })
+    homeContainer.style.height = '100vh';
     })
 })
 menuClose.forEach((g)=>{
@@ -132,6 +133,7 @@ menuClose.forEach((g)=>{
     itemsMenu.forEach((d)=>{
       d.style.display = 'none';
     })
+    homeContainer.style.height = '100%';
     })
 })
 
