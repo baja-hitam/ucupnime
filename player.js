@@ -154,7 +154,8 @@ async function fetchDataFromApiDetailAnime(player) {
 
     const serverSelect = document.getElementById('serverSelect');
     serverSelect.innerHTML = "";
-    videoPlayer.src = `${data.videoPlayer[0].url}`;
+    const vPlayer = hapusString(data.videoPlayer[0].url,"/&autoplay=true");
+    videoPlayer.src = `${vPlayer}`;
 
     data.videoPlayer.forEach((stream) => {
         const option = document.createElement('button');
@@ -169,8 +170,12 @@ async function fetchDataFromApiDetailAnime(player) {
     const watchBtn = document.querySelectorAll(".qualityBtn");
     for (let i = 0; i < watchBtn.length; i++) {
         watchBtn[i].addEventListener("click",function () {
-            const serverUrl = this.value;
+            const serverUrl = hapusString(this.value,"/&autoplay=true");
             videoPlayer.src = `${serverUrl}`;
         });
     };
   }
+
+  function hapusString(input, stringToBeDeleted) {
+    return input.replace(new RegExp(stringToBeDeleted, 'g'), '');
+  };

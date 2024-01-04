@@ -1287,18 +1287,6 @@ video {
     row-gap: 1rem;
   }
 
-  .android\:gap-y-\[\]{
-    row-gap: ;
-  }
-
-  .android\:gap-y-\[18px\]{
-    row-gap: 18px;
-  }
-
-  .android\:gap-y-\[24\]{
-    row-gap: 24;
-  }
-
   .android\:gap-y-\[24px\]{
     row-gap: 24px;
   }
@@ -1520,10 +1508,6 @@ video {
 
   .lg\:gap-y-\[10px\]{
     row-gap: 10px;
-  }
-
-  .lg\:gap-y-2{
-    row-gap: 0.5rem;
   }
 
   .lg\:text-sm{
