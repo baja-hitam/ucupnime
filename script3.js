@@ -66,7 +66,6 @@ const premieredSearch = [];
 const premieredMovie = [];
 const mop = [];
 
-getDataFilter();
 setTimeout(() => {
   getDataFilterSlug();
 }, 10000);
