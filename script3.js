@@ -146,7 +146,7 @@ menuClose.forEach((g)=>{
 
 async function fetchDataFromApiAnime(page) {
     // Ganti URL API dan parameter sesuai kebutuhan Anda
-    const apiUrl = `https://wajik-anime-api.vercel.app/anime?page=${page}`;
+    const apiUrl = `https://wajik-anime-api.vercel.app/otakudesu/ongoing?page=${page}`;
   
     return fetch(apiUrl)
       .then(response => response.json())
