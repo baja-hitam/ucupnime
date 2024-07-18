@@ -198,12 +198,12 @@ async function fetchDataFromApiAnime(page) {
 async function getDataFromApiSeries() {
     const data = await fetchDataFromApiAnime(1);
     for (let i = 0; i < 12; i++) {
-      pstOngoing[i].src = `${data.list[i].poster}`;
-      sta[i].innerHTML = `${data.list[i].star}`;
-      eps[i].innerHTML = `${data.list[i].episode}`;
-      jdl[i].innerHTML = `${data.list[i].title}`;
+      pstOngoing[i].src = `${data[i].poster}`;
+      sta[i].innerHTML = `${data[i].hariRilis}`;
+      eps[i].innerHTML = `${data[i].episodeTerbaru}`;
+      jdl[i].innerHTML = `${data[i].judul}`;
       seriesWarp[i].addEventListener('click',async function() {
-        localStorage.setItem('datakey',JSON.stringify(data.list[i].slug));
+        localStorage.setItem('datakey',JSON.stringify(data[i].slug));
         window.location = "detail.html";
       });
     };
