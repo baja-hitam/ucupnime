@@ -1,3 +1,4 @@
+
 const pathName = window.location.pathname;
 const pageName = pathName.split("/").pop();
 
@@ -67,13 +68,13 @@ const premieredMovie = [];
 const mop = [];
 
 setTimeout(() => {
-  getDataFilterSlug();
+  prosesFilter();
 }, 10000);
 setTimeout(() => {
   getDataFromApi();
 }, 25000);
 getDataFromApiSeries();
-getDataFromApiMovie();
+// getDataFromApiMovie();
 
 
 async function search() {
@@ -153,6 +154,26 @@ async function fetchDataFromApiAnime(page) {
         console.error('Terjadi kesalahan:', error);
       });
   };
+  async function fetchDataFromApiAnimeHome() {
+    // Ganti URL API dan parameter sesuai kebutuhan Anda
+    const apiUrl = `https://wajik-anime-api.vercel.app/samehadaku/home`;
+  
+    return fetch(apiUrl)
+      .then(response => response.json())
+      .catch(error => {
+        console.error('Terjadi kesalahan:', error);
+      });
+  };
+  async function fetchDataFromApiAnimeCompleted(page) {
+    // Ganti URL API dan parameter sesuai kebutuhan Anda
+    const apiUrl = `https://wajik-anime-api.vercel.app/samehadaku/completed?page=${page}`;
+  
+    return fetch(apiUrl)
+      .then(response => response.json())
+      .catch(error => {
+        console.error('Terjadi kesalahan:', error);
+      });
+  };
   async function fetchDataFromApiSearch(input) {
     // Ganti URL API dan parameter sesuai kebutuhan Anda
     const apiUrl = `https://wajik-anime-api.vercel.app/search?query=${input}`;
@@ -185,7 +206,7 @@ async function fetchDataFromApiAnime(page) {
   };
   async function fetchDataFromApiDetailAnime(slug) {
     // Ganti URL API dan parameter sesuai kebutuhan Anda
-    const apiUrl = `https://wajik-anime-api.vercel.app/anime/${slug}`;
+    const apiUrl = `https://wajik-anime-api.vercel.app/samehadaku/anime/${slug}`;
   
     return fetch(apiUrl)
       .then(response => response.json())
@@ -195,22 +216,25 @@ async function fetchDataFromApiAnime(page) {
   };
   
 async function getDataFromApiSeries() {
-    const data = await fetchDataFromApiAnime(1);
+    const data = await fetchDataFromApiAnimeHome();
+    const anime = data.data.recent.animeList;
+    // console.log(data);
+    for (let i = 0; i < 12;i++){
+      const data1= await fetchDataFromApiDetailAnime(anime[i].animeId);
+      premiered.push(data1.data.season);
+    }
+    
     for (let i = 0; i < 12; i++) {
-      pstOngoing[i].src = `${data[i].poster}`;
-      sta[i].innerHTML = `${data[i].hariRilis}`;
-      eps[i].innerHTML = `${data[i].episodeTerbaru}`;
-      jdl[i].innerHTML = `${data[i].judul}`;
+      pstOngoing[i].src = `${anime[i].poster}`;
+      sta[i].innerHTML = ``;
+      eps[i].innerHTML = `Eps ${anime[i].episodes}`;
+      jdl[i].innerHTML = `${anime[i].title}`;
+      pred[i].innerHTML = `${premiered[i]} / Sub Indo`;
       seriesWarp[i].addEventListener('click',async function() {
-        localStorage.setItem('datakey',JSON.stringify(data[i].slug));
+        localStorage.setItem('datakey',JSON.stringify(anime[i].animeId));
         window.location = "detail.html";
       });
     };
-    for (let i = 0; i < 12;i++){
-      const data1= await fetchDataFromApiDetailAnime(data.list[i].slug);
-      premiered.push(data1.detailsList[5].title);
-      pred[i].innerHTML = `${premiered[i]} / Sub Indo`;
-    }
   }
 
   async function getDataFromApiMovie() {
@@ -233,25 +257,45 @@ async function getDataFromApiSeries() {
   async function getDataFilter() {
     for (let page = 1; page <= totalRequests; page++) {
       try {
-        const data = await fetchDataFromApiAnime(page);
-        const test = data.list.filter((anm) => parseFloat(anm.star) >= 7.5);
+        const data = await fetchDataFromApiAnimeCompleted(1);
+        // console.log(data);
+        
+        const test = data.data.animeList.filter((anm) => parseFloat(anm.score) >= 7.5);
+        // console.log(test);
+        
         test.forEach((r)=>{
-          mop.push(r.slug);
+          mop.push(r.animeId);
         })
       } catch (error) {
         console.error('Terjadi kesalahan:', error);
       }
     }
+    
   }
 
   async function getDataFilterSlug() {
+    // console.log(mop);
+    
     for (let i = 0; i < 11; i++) {
       const data = await fetchDataFromApiDetailAnime(mop[i]);
-      dataTitle.push(data.title);
-      dataResults.push(data.poster);
-      dataAired.push(data.detailsList[6].title);
-      dataSinopsis.push(data.description);
+      // console.log(data.data);
+      
+      
+      dataTitle.push(mop[i]);
+      dataResults.push(data.data.poster);
+      dataAired.push(data.data.aired);
+      let sizeParagraph = data.data.synopsis.paragraphs.length;
+      let sinopsis = '';
+      for (let p = 0; p < sizeParagraph; p++) {
+        sinopsis += data.data.synopsis.paragraphs[p];
+      }
+      dataSinopsis.push(sinopsis);
     }
+  }
+
+  async function prosesFilter(){
+    await getDataFilter();
+    await getDataFilterSlug();
   }
   function getDataFromApi() {
     for (let i = 0; i < 11; i++) {
