@@ -1,4 +1,3 @@
-
 const pathName = window.location.pathname;
 const pageName = pathName.split("/").pop();
 
@@ -144,16 +143,16 @@ menuClose.forEach((g)=>{
 })
 
 
-async function fetchDataFromApiAnime(page) {
-    // Ganti URL API dan parameter sesuai kebutuhan Anda
-    const apiUrl = `https://wajik-anime-api.vercel.app/otakudesu/ongoing?page=${page}`;
+// async function fetchDataFromApiAnime(page) {
+//     // Ganti URL API dan parameter sesuai kebutuhan Anda
+//     const apiUrl = `https://wajik-anime-api.vercel.app/otakudesu/ongoing?page=${page}`;
   
-    return fetch(apiUrl)
-      .then(response => response.json())
-      .catch(error => {
-        console.error('Terjadi kesalahan:', error);
-      });
-  };
+//     return fetch(apiUrl)
+//       .then(response => response.json())
+//       .catch(error => {
+//         console.error('Terjadi kesalahan:', error);
+//       });
+//   };
   async function fetchDataFromApiAnimeHome() {
     // Ganti URL API dan parameter sesuai kebutuhan Anda
     const apiUrl = `https://wajik-anime-api.vercel.app/samehadaku/home`;
@@ -164,46 +163,56 @@ async function fetchDataFromApiAnime(page) {
         console.error('Terjadi kesalahan:', error);
       });
   };
-  async function fetchDataFromApiAnimeCompleted(page) {
+  async function fetchDataFromApiAnimePopular(page) {
     // Ganti URL API dan parameter sesuai kebutuhan Anda
-    const apiUrl = `https://wajik-anime-api.vercel.app/samehadaku/completed?page=${page}`;
+    const apiUrl = `https://wajik-anime-api.vercel.app/samehadaku/popular?page=${page}`;
   
     return fetch(apiUrl)
       .then(response => response.json())
       .catch(error => {
         console.error('Terjadi kesalahan:', error);
       });
-  };
-  async function fetchDataFromApiSearch(input) {
-    // Ganti URL API dan parameter sesuai kebutuhan Anda
-    const apiUrl = `https://wajik-anime-api.vercel.app/search?query=${input}`;
+  }
+  // async function fetchDataFromApiAnimeCompleted(page) {
+  //   // Ganti URL API dan parameter sesuai kebutuhan Anda
+  //   const apiUrl = `https://wajik-anime-api.vercel.app/samehadaku/completed?page=${page}`;
   
-    return fetch(apiUrl)
-      .then(response => response.json())
-      .catch(error => {
-        console.error('Terjadi kesalahan:', error);
-      });
-  };
-  async function fetchDataFromApiMovie(page) {
-    // Ganti URL API dan parameter sesuai kebutuhan Anda
-    const apiUrl = `https://wajik-anime-api.vercel.app/movie?page=${page}`;
+  //   return fetch(apiUrl)
+  //     .then(response => response.json())
+  //     .catch(error => {
+  //       console.error('Terjadi kesalahan:', error);
+  //     });
+  // };
+  // async function fetchDataFromApiSearch(input) {
+  //   // Ganti URL API dan parameter sesuai kebutuhan Anda
+  //   const apiUrl = `https://wajik-anime-api.vercel.app/search?query=${input}`;
   
-    return fetch(apiUrl)
-      .then(response => response.json())
-      .catch(error => {
-        console.error('Terjadi kesalahan:', error);
-      });
-  };
-  async function fetchDataFromApiDetailMovie(slug) {
-    // Ganti URL API dan parameter sesuai kebutuhan Anda
-    const apiUrl = `https://wajik-anime-api.vercel.app/movie/${slug}`;
+  //   return fetch(apiUrl)
+  //     .then(response => response.json())
+  //     .catch(error => {
+  //       console.error('Terjadi kesalahan:', error);
+  //     });
+  // };
+  // async function fetchDataFromApiMovie(page) {
+  //   // Ganti URL API dan parameter sesuai kebutuhan Anda
+  //   const apiUrl = `https://wajik-anime-api.vercel.app/movie?page=${page}`;
   
-    return fetch(apiUrl)
-      .then(response => response.json())
-      .catch(error => {
-        console.error('Terjadi kesalahan:', error);
-      });
-  };
+  //   return fetch(apiUrl)
+  //     .then(response => response.json())
+  //     .catch(error => {
+  //       console.error('Terjadi kesalahan:', error);
+  //     });
+  // };
+  // async function fetchDataFromApiDetailMovie(slug) {
+  //   // Ganti URL API dan parameter sesuai kebutuhan Anda
+  //   const apiUrl = `https://wajik-anime-api.vercel.app/movie/${slug}`;
+  
+  //   return fetch(apiUrl)
+  //     .then(response => response.json())
+  //     .catch(error => {
+  //       console.error('Terjadi kesalahan:', error);
+  //     });
+  // };
   async function fetchDataFromApiDetailAnime(slug) {
     // Ganti URL API dan parameter sesuai kebutuhan Anda
     const apiUrl = `https://wajik-anime-api.vercel.app/samehadaku/anime/${slug}`;
@@ -254,22 +263,18 @@ async function getDataFromApiSeries() {
               predMovie[i].innerHTML = `${premieredMovie[i]}`;
   }
   }
-  async function getDataFilter() {
-    for (let page = 1; page <= totalRequests; page++) {
+  async function getDataSlugAnimePopular() {
       try {
-        const data = await fetchDataFromApiAnimeCompleted(1);
-        // console.log(data);
+        const data = await fetchDataFromApiAnimePopular(1);
+        let slugAnimePopular = data.data.animeList;
+        // console.log(slugAnimePopular);
         
-        const test = data.data.animeList.filter((anm) => parseFloat(anm.score) >= 7.5);
-        // console.log(test);
-        
-        test.forEach((r)=>{
+        slugAnimePopular.forEach((r)=>{
           mop.push(r.animeId);
         })
       } catch (error) {
         console.error('Terjadi kesalahan:', error);
       }
-    }
     
   }
 
@@ -294,7 +299,7 @@ async function getDataFromApiSeries() {
   }
 
   async function prosesFilter(){
-    await getDataFilter();
+    await getDataSlugAnimePopular();
     await getDataFilterSlug();
   }
   function getDataFromApi() {

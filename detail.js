@@ -102,7 +102,7 @@ async function fetchDataFromApiSearch(input) {
 };
 async function fetchDataFromApiDetailAnime(slug) {
     // Ganti URL API dan parameter sesuai kebutuhan Anda
-    const apiUrl = `https://wajik-anime-api.vercel.app/anime/${slug}`;
+    const apiUrl = `https://wajik-anime-api.vercel.app/samehadaku/anime/${slug}`;
   
     return fetch(apiUrl)
       .then(response => response.json())
@@ -112,25 +112,33 @@ async function fetchDataFromApiDetailAnime(slug) {
   };
   async function getDataFromApiDetailAnime() {
     const data = await fetchDataFromApiDetailAnime(saveData);
-    jdlDetail.innerHTML = `${data.title}`;
-    wrpContainer.src = `${data.poster}`;
-    pstDetail.src = `${data.poster}`;
-    desDetail.innerHTML = `${data.description}`;
-    rlsDetail.innerHTML = `${data.detailsList[6].title}`;
-    score.innerHTML = `${data.detailsList[3].title[0]+data.detailsList[3].title[1]+data.detailsList[3].title[2]+data.detailsList[3].title[3]}`;
-    titleScore.innerHTML = `${data.detailsList[3].subTitle}`;
-    episod.innerHTML = `${data.currentTotalEpisodes}`;
-    titleEpisod.innerHTML = `${data.detailsList[2].subTitle}`;
-    data.genres.forEach(e => {
-      genreDetail.innerHTML += `${e}, `;
+    let detailAnime = data.data;
+    console.log(detailAnime);
+    
+    jdlDetail.innerHTML = `${detailAnime.english}`;
+    wrpContainer.src = `${detailAnime.poster}`;
+    pstDetail.src = `${detailAnime.poster}`;
+    let sizeParagraph = detailAnime.synopsis.paragraphs.length;
+      let sinopsis = '';
+      for (let p = 0; p < sizeParagraph; p++) {
+        sinopsis += detailAnime.synopsis.paragraphs[p];
+      }
+    desDetail.innerHTML = `${sinopsis}`;
+    rlsDetail.innerHTML = `${detailAnime.aired}`;
+    score.innerHTML = `${detailAnime.score.value}`;
+    titleScore.innerHTML = `Score`;
+    episod.innerHTML = `${detailAnime.episodeList[0].title}`;
+    titleEpisod.innerHTML = `Episode`;
+    detailAnime.genreList.forEach(e => {
+      genreDetail.innerHTML += `${e.title}, `;
     });
     const episodeSelect = document.getElementById('selectElement');
     episodeSelect.style.display = 'block';
     episodeSelect.innerHTML = "";
-    for (let i = 1; i <= data.currentTotalEpisodes; i++) {
+    for (let i = 0; i < detailAnime.episodeList.length; i++) {
       let option = document.createElement('option');
-      option.value = `${data.slugPlayer}/${i}`;
-      option.innerHTML = `Episode ${i}`;
+      option.value = `${detailAnime.episodeList[i].episodeId}`;
+      option.innerHTML = `Episode ${detailAnime.episodeList[i].title ?? 'Special'}`;
       option.style.color = 'black';
       episodeSelect.appendChild(option);
   }

@@ -103,9 +103,19 @@ async function fetchDataFromApiSearch(input) {
     });
 };
 
-async function fetchDataFromApiDetailAnime(player) {
+async function fetchDataFromApiDetailAnime(animeId) {
     // Ganti URL API dan parameter sesuai kebutuhan Anda
-    const apiUrl = `https://wajik-anime-api.vercel.app/anime/${player}`;
+    const apiUrl = `https://wajik-anime-api.vercel.app/samehadaku/anime/${animeId}`;
+  
+    return fetch(apiUrl)
+      .then(response => response.json())
+      .catch(error => {
+        console.error('Terjadi kesalahan:', error);
+      });
+  };
+  async function fetchDataFromApiEpisodeAnime(episodeId) {
+    // Ganti URL API dan parameter sesuai kebutuhan Anda
+    const apiUrl = `https://wajik-anime-api.vercel.app/samehadaku/episode/${episodeId}`;
   
     return fetch(apiUrl)
       .then(response => response.json())
@@ -114,47 +124,57 @@ async function fetchDataFromApiDetailAnime(player) {
       });
   };
   async function getDataFromApiDetailAnime() {
-    const data = await fetchDataFromApiDetailAnime(saveData);
-    jdlDetail.innerHTML = `${data.title}`;
-    wrpContainer.src = `${data.poster}`;
-    pstDetail.src = `${data.poster}`;
-    desDetail.innerHTML = `${data.description}`;
-    rlsDetail.innerHTML = `${data.detailsList[6].title}`;
-    score.innerHTML = `${data.detailsList[3].title[0]+data.detailsList[3].title[1]+data.detailsList[3].title[2]+data.detailsList[3].title[3]}`;
-    titleScore.innerHTML = `${data.detailsList[3].subTitle}`;
-    episod.innerHTML = `${data.detailsList[1].title}`;
-    titleEpisod.innerHTML = `${data.detailsList[2].subTitle}`;
-    data.genres.forEach(e => {
-      genreDetail.innerHTML += `${e}, `;
+    const data = await fetchDataFromApiEpisodeAnime(playerSave);
+    let detailAnime = data.data;
+    // console.log(detailAnime);
+    
+    jdlDetail.innerHTML = `${detailAnime.title}`;
+    wrpContainer.src = `${detailAnime.poster}`;
+    pstDetail.src = `${detailAnime.poster}`;
+    let sizeParagraph = detailAnime.synopsis.paragraphs.length;
+      let sinopsis = '';
+      for (let p = 0; p < sizeParagraph; p++) {
+        sinopsis += detailAnime.synopsis.paragraphs[p];
+      }
+    desDetail.innerHTML = `${sinopsis}`;
+    rlsDetail.innerHTML = `${detailAnime.releasedOn}`;
+    detailAnime.genreList.forEach(e => {
+      genreDetail.innerHTML += `${e.title}, `;
     });
+    const data1 = await fetchDataFromApiDetailAnime(saveData)
+    let detailAnime1 = data1.data;
+    
     const episodeSelect = document.getElementById('selectElement');
     episodeSelect.style.display = 'block';
     episodeSelect.innerHTML = "";
-    for (let i = 1; i <= data.currentTotalEpisodes; i++) {
+    for (let i = 0; i < detailAnime1.episodeList.length; i++) {
       let option = document.createElement('option');
-      option.value = `${data.slugPlayer}/${i}`;
-      option.innerHTML = `Episode ${i}`;
+      option.value = `${detailAnime1.episodeList[i].episodeId}`;
+      option.innerHTML = `Episode ${detailAnime1.episodeList[i].title ?? 'Special'}`;
       option.style.color = 'black';
-      option.classList.add('bg-transparent');
       episodeSelect.appendChild(option);
   }
+
     episodeSelect.addEventListener("change", async function () {
         const episodeId = this.value;
-        const data = await fetchDataFromApiDetailAnime(episodeId);
+        const data = await fetchDataFromApiEpisodeAnime(episodeId);
         watchContainer.style.display = 'block';
         const serverSelect = document.getElementById('serverSelect');
         serverSelect.innerHTML = "";
-        videoPlayer.src = `${data.videoPlayer[0].url}`;
+        videoPlayer.src = `${data.data.defaultStreamingUrl}`;
         displayWatchInfo(episodeId)
     });
   }
   async function displayWatchInfo(params) {
-    const data = await fetchDataFromApiDetailAnime(params);
+    const data = await fetchDataFromApiEpisodeAnime(params);
     watchContainer.style.display = 'block';
-
+    const playerAnime = data.data;
+    // console.log(playerAnime);
+    
+    
     const serverSelect = document.getElementById('serverSelect');
     serverSelect.innerHTML = "";
-    const vPlayer = hapusString(data.videoPlayer[0].url,"/&autoplay=true");
+    const vPlayer = playerAnime.defaultStreamingUrl;
     videoPlayer.src = `${vPlayer}`;
 
     data.videoPlayer.forEach((stream) => {
